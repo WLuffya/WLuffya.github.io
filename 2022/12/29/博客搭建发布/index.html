@@ -16,22 +16,22 @@
   <meta name="author" content="WLuffya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参数 描述 默认值    layout 布局 config.default_layout   title 标题 文章的文件名   date 建立日期 文件建立日期   updated 更新日期 文件更新日期   comments 开启文章的评论功能 true   tags 标签（不适用于分页）    categories 分类（不适用于分页）    permalink 覆盖文章网址    e">
+    <meta name="description" content="准备工作  Git配置   git config --global user.name “Your Name” git config --global user.email “email@example.com” 官网下载链接: https:&#x2F;&#x2F;git-scm.com&#x2F;downloads   nodeJs   node  -v npm -v (回显版本号则成功) 官网下载链接：https:&#x2F;&#x2F;no">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客搭建发布">
+<meta property="og:title" content="Hexo+GitHub博客搭建">
 <meta property="og:url" content="https://wluffya.github.io/2022/12/29/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%91%E5%B8%83/index.html">
 <meta property="og:site_name" content="WLuffya Blog">
-<meta property="og:description" content="参数 描述 默认值    layout 布局 config.default_layout   title 标题 文章的文件名   date 建立日期 文件建立日期   updated 更新日期 文件更新日期   comments 开启文章的评论功能 true   tags 标签（不适用于分页）    categories 分类（不适用于分页）    permalink 覆盖文章网址    e">
+<meta property="og:description" content="准备工作  Git配置   git config --global user.name “Your Name” git config --global user.email “email@example.com” 官网下载链接: https:&#x2F;&#x2F;git-scm.com&#x2F;downloads   nodeJs   node  -v npm -v (回显版本号则成功) 官网下载链接：https:&#x2F;&#x2F;no">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-29T07:45:28.000Z">
-<meta property="article:modified_time" content="2022-12-29T09:54:16.607Z">
+<meta property="article:modified_time" content="2023-02-08T11:49:14.295Z">
 <meta property="article:author" content="WLuffya">
 <meta property="article:tag" content="运维">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>博客搭建发布 - WLuffya Blog</title>
+  <title>Hexo+GitHub博客搭建 - WLuffya Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,7 +209,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="博客搭建发布"></span>
+            <span id="subtitle" data-typed-text="Hexo+GitHub博客搭建"></span>
           
         </div>
 
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          788 字
+          1.5k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          7 分钟
+          13 分钟
         
       </span>
     
@@ -281,86 +281,148 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">博客搭建发布</h1>
+            <h1 style="display: none">Hexo+GitHub博客搭建</h1>
             
             
               <div class="markdown-body">
                 
-                <table>
+                <h2 id="准备工作">准备工作</h2>
+<ol>
+<li class="lvl-3">Git配置</li>
+</ol>
+<blockquote>
+<p>git config --global <a target="_blank" rel="noopener" href="http://user.name">user.name</a> “Your Name”<br>
+git config --global user.email “<a href="mailto:email@example.com">email@example.com</a>”<br>
+官网下载链接: <a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+</blockquote>
+<ol start="2">
+<li class="lvl-3">nodeJs</li>
+</ol>
+<blockquote>
+<p>node  -v<br>
+npm -v<br>
+(回显版本号则成功)<br>
+官网下载链接：<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">https://nodejs.org/zh-cn/download/</a></p>
+</blockquote>
+<h2 id="博客服务">博客服务</h2>
+<ol>
+<li class="lvl-3">
+<p>安装hexo</p>
+</li>
+</ol>
+<blockquote>
+<p>npm install hexo-cli -g</p>
+</blockquote>
+<ol start="2">
+<li class="lvl-3">
+<p>初始化博客</p>
+</li>
+</ol>
+<blockquote>
+<p>hexo init myblog # 初始化<br>
+cd myblog # 进入博客目录<br>
+npm install # 安装服务</p>
+</blockquote>
+<ol start="3">
+<li class="lvl-3">
+<p>启动</p>
+</li>
+</ol>
+<blockquote>
+<p>hexo g # 生成<br>
+hexo s # 启动</p>
+</blockquote>
+<h2 id="GitHub配置">GitHub配置</h2>
+<blockquote>
+<p>ssh-keygen -t rsa -C “github邮箱” # 生成密钥</p>
+</blockquote>
+<p>访问 C:\User\用户名.ssh 里面有两个文件, 打开公钥id_rsa.pub, 复制里面内容粘贴到GitHub个人主页 -&gt; Setting -&gt; SSH and GPG Keys -&gt; New SSH Key 中</p>
+<blockquote>
+<p>ssh -T <a href="mailto:git@github.com">git@github.com</a> # 测试是否连通</p>
+</blockquote>
+<p>修改博客文件夹下的_congih.yml文件<br>
+<strong><a target="_blank" rel="noopener" href="http://xn--+-br6a0s58hg3cba969prxak7so94cied.github.io">创建的仓库名为用户名+.github.io</a></strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># Deployment</span><br><span class="hljs-comment">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repository:</span> <span class="hljs-string">https://github.com/xxxxx/xxxxx.github.io.git</span>  <span class="hljs-comment"># 仓库地址</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>npm install hexo-deployer-git --save # 安装git服务<br>
+hexo d # 发布</p>
+</blockquote>
+<h2 id="博客页内信息">博客页内信息</h2>
+<table>
 <thead>
 <tr>
-<th align="left">参数</th>
-<th align="left">描述</th>
-<th align="left">默认值</th>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">默认值</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left"><code>layout</code></td>
-<td align="left">布局</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E6%96%87%E7%AB%A0"><code>config.default_layout</code></a></td>
+<tbody>
+<tr>
+<td style="text-align:left"><code>layout</code></td>
+<td style="text-align:left">布局</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E6%96%87%E7%AB%A0"><code>config.default_layout</code></a></td>
 </tr>
 <tr>
-<td align="left"><code>title</code></td>
-<td align="left">标题</td>
-<td align="left">文章的文件名</td>
+<td style="text-align:left"><code>title</code></td>
+<td style="text-align:left">标题</td>
+<td style="text-align:left">文章的文件名</td>
 </tr>
 <tr>
-<td align="left"><code>date</code></td>
-<td align="left">建立日期</td>
-<td align="left">文件建立日期</td>
+<td style="text-align:left"><code>date</code></td>
+<td style="text-align:left">建立日期</td>
+<td style="text-align:left">文件建立日期</td>
 </tr>
 <tr>
-<td align="left"><code>updated</code></td>
-<td align="left">更新日期</td>
-<td align="left">文件更新日期</td>
+<td style="text-align:left"><code>updated</code></td>
+<td style="text-align:left">更新日期</td>
+<td style="text-align:left">文件更新日期</td>
 </tr>
 <tr>
-<td align="left"><code>comments</code></td>
-<td align="left">开启文章的评论功能</td>
-<td align="left">true</td>
+<td style="text-align:left"><code>comments</code></td>
+<td style="text-align:left">开启文章的评论功能</td>
+<td style="text-align:left">true</td>
 </tr>
 <tr>
-<td align="left"><code>tags</code></td>
-<td align="left">标签（不适用于分页）</td>
-<td align="left"></td>
+<td style="text-align:left"><code>tags</code></td>
+<td style="text-align:left">标签（不适用于分页）</td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"><code>categories</code></td>
-<td align="left">分类（不适用于分页）</td>
-<td align="left"></td>
+<td style="text-align:left"><code>categories</code></td>
+<td style="text-align:left">分类（不适用于分页）</td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"><code>permalink</code></td>
-<td align="left">覆盖文章网址</td>
-<td align="left"></td>
+<td style="text-align:left"><code>permalink</code></td>
+<td style="text-align:left">覆盖文章网址</td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"><code>excerpt</code></td>
-<td align="left">纯文本的页面摘要。使用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins#%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81%E5%92%8C%E6%88%AA%E6%96%AD">该插件</a> 来格式化文本</td>
-<td align="left"></td>
+<td style="text-align:left"><code>excerpt</code></td>
+<td style="text-align:left">纯文本的页面摘要。使用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins#%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81%E5%92%8C%E6%88%AA%E6%96%AD">该插件</a> 来格式化文本</td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"><code>disableNunjucks</code></td>
-<td align="left">启用时禁用 Nunjucks 标签 <code>&#123;&#123; &#125;&#125;</code>&#x2F;<code>&#123;% %&#125;</code> 和 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins">标签插件</a> 的渲染功能</td>
-<td align="left"></td>
+<td style="text-align:left"><code>disableNunjucks</code></td>
+<td style="text-align:left">启用时禁用 Nunjucks 标签 <code>&#123;&#123; &#125;&#125;</code>/<code>&#123;% %&#125;</code> 和 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins">标签插件</a> 的渲染功能</td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"><code>lang</code></td>
-<td align="left">设置语言以覆盖 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/internationalization#%E8%B7%AF%E5%BE%84">自动检测</a></td>
-<td align="left">继承自 <code>_config.yml</code></td>
+<td style="text-align:left"><code>lang</code></td>
+<td style="text-align:left">设置语言以覆盖 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/internationalization#%E8%B7%AF%E5%BE%84">自动检测</a></td>
+<td style="text-align:left">继承自 <code>_config.yml</code></td>
 </tr>
-</tbody></table>
-<h2 id="分类和标签"><a href="#分类和标签" class="headerlink" title="分类和标签"></a>分类和标签</h2><p>只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：分类具有顺序性和层次性，也就是说 <code>Foo, Bar</code> 不等于 <code>Bar, Foo</code>；而标签没有顺序和层次。</p>
+</tbody>
+</table>
+<h2 id="分类和标签">分类和标签</h2>
+<p>只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：分类具有顺序性和层次性，也就是说 <code>Foo, Bar</code> 不等于 <code>Bar, Foo</code>；而标签没有顺序和层次。</p>
 <figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs subunit">categories:<br>- Diary<br><span class="hljs-keyword">tags:</span><br>- PS3<br>- Games<br></code></pre></td></tr></table></figure>
-
 <p><strong>分类方法的分歧</strong></p>
 <p>如果您有过使用 WordPress 的经验，就很容易误解 Hexo 的分类方式。WordPress 支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是 Hexo 不支持指定多个同级分类。下面的指定方法：</p>
 <figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">categories</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">Diary</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">Life</span><br></code></pre></td></tr></table></figure>
-
 <p>会使分类 <code>Life</code> 成为 <code>Diary</code> 的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。</p>
 <p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p>
 <figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ldif"><span class="hljs-attribute">categories</span>:<br><span class="hljs-literal">-</span> [Diary, PlayStation]<br><span class="hljs-literal">-</span> [Diary, Games]<br><span class="hljs-literal">-</span> [Life]<br></code></pre></td></tr></table></figure>
-
 <p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p>
 
                 
@@ -407,7 +469,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>博客搭建发布</div>
+      <div>Hexo+GitHub博客搭建</div>
       <div>https://wluffya.github.io/2022/12/29/博客搭建发布/</div>
     </div>
     <div class="license-meta">
@@ -461,6 +523,12 @@
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/12/28/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

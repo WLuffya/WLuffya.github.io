@@ -32,3 +32,12 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
   border-left: 4px solid #e74c3c;
   color: #cf2b1a;
 }
+.info {
+  padding-left: 12px;
+  background-color: rgba(52,152,219,0.3);
+  border-left: 4px solid #3498db;
+  color: #217bb8;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 1px;
+}
