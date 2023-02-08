@@ -11,6 +11,7 @@
   <link rel="icon" href="/img/icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="referrer" content="no-referrer">
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="WLuffya">
@@ -23,127 +24,127 @@
 <meta property="og:site_name" content="WLuffya Blog">
 <meta property="og:description" content="Linux-v10.0-01天-课堂笔记 学习目标   能够知道什么是Linux系统以及它的应用场景   能够独立完成安装VMware虚拟机和网络配置   能够独立完成安装CentOS以及远程终端SecureCRT   能够熟练编写账户管理、用户组的增删改查和添加命令   能够熟练编写系统管理的常用命令   能够熟练编写目录常用命令   能够熟练编写权限常用命令   能够知道用户组实际应用场景">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576199620565.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1558234034446.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1560477460567.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1575879660267.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1575881750752.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1575879998775.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1575882315996.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576225778294.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576043805214.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576042675759.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576043845543.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576049906893.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576044108094.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576046509680.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576049946335.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576047020612.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576049978916.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576572808687.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576050003979.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576047810973.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576050645612.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576050663149.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576050797421.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576051028346.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576050031859.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576137760529.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576139901757.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576139987480.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576052178420.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576052234012.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576053311351.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576054831537.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576054846742.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576578213110.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576056341831.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576056180063.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576494207598.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576493914410.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576494108199.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576494276066.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576495173035.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576544383182.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576544720729.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576059932470.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576060232485.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576136722927.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576143161044.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576143218612.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576550880532.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576147390352.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576147504533.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576147567622.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576147666007.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576148429123.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576226884267.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576229638059.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576229679265.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576230100277.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576230123895.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576564124577.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576564161701.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576553470716.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576639252612.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576553646036.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576564294612.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576552719245.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576465885337.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576466126779.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576466284360.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576466413099.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576466506750.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576553229832.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576553205885.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576560522053.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576561579056.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576562978352.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576563524635.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576563827977.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576565378463.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576565459075.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576565489569.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576565710078.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576565800010.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576032746450.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576460571985.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576402570345.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576407437975.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576407536566.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576407585301.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576407880885.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576407928200.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576408146911.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576571902684.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576463267777.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576463303277.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576464280724.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576464462903.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576464626496.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576464852969.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576587867858.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576588353612.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576588480909.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576588553969.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576588591503.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576588731114.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576588941546.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576589157095.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576589467908.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576589641341.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576589820604.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576589856968.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576589903617.png">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576590031376.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576199620565.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1558234034446.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1560477460567.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1575879660267.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1575881750752.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1575879998775.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1575882315996.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576225778294.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576043805214.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576042675759.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576043845543.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576049906893.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576044108094.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576046509680.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576049946335.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576047020612.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576049978916.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576572808687.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576050003979.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576047810973.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576050645612.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576050663149.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576050797421.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576051028346.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576050031859.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576137760529.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576139901757.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576139987480.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576052178420.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576052234012.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576053311351.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576054831537.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576054846742.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576578213110.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576056341831.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576056180063.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576494207598.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576493914410.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576494108199.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576494276066.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576495173035.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576544383182.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576544720729.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576059932470.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576060232485.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576136722927.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576143161044.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576143218612.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576550880532.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576147390352.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576147504533.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576147567622.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576147666007.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576148429123.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576226884267.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576229638059.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576229679265.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576230100277.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576230123895.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576564124577.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576564161701.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576553470716.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576639252612.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576553646036.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576564294612.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576552719245.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576465885337.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576466126779.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576466284360.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576466413099.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576466506750.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576553229832.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576553205885.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576560522053.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576561579056.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576562978352.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576563524635.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576563827977.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576565378463.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576565459075.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576565489569.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576565710078.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576565800010.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576032746450.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576460571985.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576402570345.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576407437975.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576407536566.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576407585301.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576407880885.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576407928200.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576408146911.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576571902684.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576463267777.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576463303277.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576464280724.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576464462903.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576464626496.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576464852969.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576587867858.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588353612.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588480909.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588553969.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588591503.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588731114.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588941546.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589157095.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589467908.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589641341.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589820604.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589856968.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589903617.png">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576590031376.png">
 <meta property="article:published_time" content="2022-12-29T09:51:38.000Z">
-<meta property="article:modified_time" content="2022-12-29T09:53:49.491Z">
+<meta property="article:modified_time" content="2023-02-08T12:56:04.096Z">
 <meta property="article:author" content="WLuffya">
 <meta property="article:tag" content="运维">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/assets/1576199620565.png">
+<meta name="twitter:image" content="https://wluffya.github.io/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576199620565.png">
   
   
   
@@ -435,7 +436,7 @@
 <h2 id="1-1-操作系统">1.1 操作系统</h2>
 <p>操作系统(Operation System, OS)，是管理<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA">计算机</a><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A1%AC%E4%BB%B6">硬件</a>与<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6">软件</a>资源的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F">计算机程序</a>，同时也是计算机系统的内核与基石。操作系统需要处理如管理与配置<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%86%85%E5%AD%98">内存</a>、决定<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90/974435">系统资源</a>供需的优先次序、控制<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87/10823368">输入设备</a>与<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BE%93%E5%87%BA%E8%AE%BE%E5%A4%87/10823333">输出设备</a>、操作网络与管理文件系统等基本事务。操作系统也提供一个让用户与系统交互的操作界面。</p>
 <p>操作系统作为接口的示意图:</p>
-<p><img src="assets/1576199620565.png" srcset="/img/loading.gif" lazyload alt="1576199620565"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576199620565.png" srcset="/img/loading.gif" lazyload alt="1576199620565"></p>
 <p>如上图所示，在操作系统的最上层是用户，中间层是操作系统（里面可能装了很多的应用程序），最下层是硬件的支撑，包含CPU/内存/硬盘等</p>
 <p>这就是一个完成的操作系统结构图</p>
 <p><strong>主流操作系统按照应用领域的划分</strong></p>
@@ -475,13 +476,13 @@
 <li class="lvl-4">付费</li>
 <li class="lvl-4">占有率低</li>
 </ul>
-<p><img src="assets/1558234034446.png" srcset="/img/loading.gif" lazyload alt="1558234034446"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1558234034446.png" srcset="/img/loading.gif" lazyload alt="1558234034446"></p>
 </li>
 </ul>
 <p><strong>3、嵌入式操作系统</strong></p>
 <p>​    Linux</p>
 <p><strong>4、移动设备操作系统</strong></p>
-<p><img src="assets/1560477460567.png" srcset="/img/loading.gif" lazyload alt="1560477460567"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1560477460567.png" srcset="/img/loading.gif" lazyload alt="1560477460567"></p>
 <ul class="lvl-0">
 <li class="lvl-2">
 <p>IOS</p>
@@ -501,7 +502,7 @@
 1991年，Linus Torvalds开始在Minix上编写各种驱动程序等操作系统内核组件<br>
 1991年年底，Linus Torvalds公开了Linux内核源码0.02版，仅仅是内核<br>
 1994年，Linux 1.0版本发行，Linux转向GPL版权协议至此，Linux开始盛行开来…</p>
-<p><img src="assets/1575879660267.png" srcset="/img/loading.gif" lazyload alt="1575879660267"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1575879660267.png" srcset="/img/loading.gif" lazyload alt="1575879660267"></p>
 <p>Linux 内核最初是由李纳斯•托瓦兹（Linus Torvalds）在赫尔辛基大学读书时出于个人爱好而编写的，当时他觉得教学用的迷你版 Unix操作系统 Minix 太难用了，于是决定自己开发一个操作系统。</p>
 <p>第 1 版本于 1991 发布，当时仅有 10 000 行代码。</p>
 <p>李纳斯•托瓦兹没有保留 Linux 源代码的版权，公开了代码，并邀请他人一起完善 Linux。与 Windows 及其他有专利权的操作系统不同，Linux 开放源代码，任何人都可以免费使用它。</p>
@@ -517,7 +518,7 @@
 <p>Linux是一套免费使用和自由传播的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%B1%BBUnix">类Unix</a><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192">操作系统</a>，是一个基于<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/POSIX">POSIX</a>和Unix的多用户、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%9A%E4%BB%BB%E5%8A%A1/1011764">多任务</a>、支持<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%9A%E7%BA%BF%E7%A8%8B/1190404">多线程</a>和多<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/CPU">CPU</a>的操作系统。它能运行主要的Unix工具软件、应用程序和网络协议。它支持<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/32%E4%BD%8D/5812218">32位</a>和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/64%E4%BD%8D">64位</a>硬件。Linux继承了Unix以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统。</p>
 <p>Linux 的标志和吉祥物是一只名字叫做Tux(它克斯)的企鹅，Linux是基于Unix的。</p>
 <p>Linux是一种自由和开放源码的操作系统，存在着许多不同的Linux版本，但它们都使用了Linux内核。Linux可安装在各种计算机硬件设备中，比如手机、平板电脑、路由器、台式计算机</p>
-<p><img src="assets/1575881750752.png" srcset="/img/loading.gif" lazyload alt="1575881750752"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1575881750752.png" srcset="/img/loading.gif" lazyload alt="1575881750752"></p>
 <p>Linux不仅系统性能稳定，而且是开源软件。其核心防火墙组件性能高效、配置简单，保证了系统的安全。在很多企业网络中，为了追求速度和安全，Linux操作系统不仅仅是被网络运维人员当作服务器使用，Linux既可以当作<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8/100571">服务器</a>，又可以当作网络防火墙是Linux的 一大亮点。</p>
 <p>Linux与其他操作系统相比 ，具有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BC%80%E6%94%BE%E6%BA%90%E7%A0%81/7176422">开放源码</a>、没有版权、技术社区用户多等特点 ，开放源码使得用户可以自由裁剪，灵活性高，功能强大，成本低。尤其系统中内嵌网络协议栈 ，经过适当的配置就可实现路由器的功能。这些特点使得Linux成为开发路由交换设备的理想开发平台。</p>
 <h3 id="1-3-2-Linux的特点">1.3.2 Linux的特点</h3>
@@ -611,7 +612,7 @@
 <h2 id="1-6-Linux发行商和常见发行版">1.6 Linux发行商和常见发行版</h2>
 <p>Linux发行版是由个人，自由组织，以及商业机构和志愿者组织编写。它们通常包括了其他的系统软件和应用软件，以及一个用来简化系统初始安装的安装工具，和让软件安装升级的集成管理器。大多数系统还包括了像提供GUI界面的XFree86之类的曾经运行于BSD的程序。一个典型的Linux发行版包括：Linux内核，一些GNU程序库和工具，命令行shell，图形界面的桌面环境，如KDE或GNOME，并包含数千种从办公套件，编译器，文本编辑器到科学工具的应用软件</p>
 <p>Linux发行版的某些版本是不需要安装，只需通过CD或者可启动的USB存储设备就能使用的版本，他们称为LiveCD。</p>
-<p><img src="assets/1575879998775.png" srcset="/img/loading.gif" lazyload alt="1575879998775"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1575879998775.png" srcset="/img/loading.gif" lazyload alt="1575879998775"></p>
 <p><strong>Linux的版本号分为两部分：内核版本和发行版本</strong>。</p>
 <p><strong>1．Linux的内核版本</strong><br>
 内核版本指的是在Linus Torvalds领导下的开发小组开发出的系统内核的版本号，通常，内核版本号的第二位是偶数表示是稳定的版本，如2.6.25；是奇数表示有一些新的东西加入，是不稳定的测试版本，如2.5.6。Linux操作系统的核心就是它的内核，Linus Torvalds和他的小组在不断地开发和推出新内核。</p>
@@ -623,7 +624,7 @@ Linux的发行版本大体可以分为两类：</p>
 <p>一类是社区组织维护的发行版本，前者以著名的RedHatLinux为代表，后者以Debian为代表</p>
 <p>以下为Linux的主流版本：</p>
 <p>目前市面上较知名的发行版有：Ubuntu、RedHat、CentOS、Debian、Fedora、SuSE、OpenSUSE、Arch Linux、SolusOS 等</p>
-<p><img src="assets/1575882315996.png" srcset="/img/loading.gif" lazyload alt="1575882315996"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1575882315996.png" srcset="/img/loading.gif" lazyload alt="1575882315996"></p>
 <p><strong>以下是主要的发行版本</strong></p>
 <figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs erlang">需要注意的：<br>下面的内容主要是介绍了下Linux发行家族以及发行版本的一些详细信息，虽然我们当前的课程讲解的是CentOS,但是其他的一些发行商、主流的发行版本比如Ubuntu、Redhat也需要让学生多多了解下，毕竟这是Linux体系内产品线<br>注意<br>下面的文字虽然很多，但是只要让学生知道有这么回事即可<br>在下面会简单的总结..<br></code></pre></td></tr></table></figure>
 <p><strong>1、Debian 介绍</strong></p>
@@ -735,7 +736,7 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <p>在职场中，大量的 <strong>服务器维护工作</strong> 都是在 远程 通过SSH客户端 来完成的， 并没有图形界面， 所有的维护工作都需要通过命令来完成</p>
 </li>
 </ul>
-<p><img src="assets/1576225778294.png" srcset="/img/loading.gif" lazyload alt="1576225778294"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576225778294.png" srcset="/img/loading.gif" lazyload alt="1576225778294"></p>
 <p>在职场中， 作为后端程序员或者运维， 必须要或多或少的掌握一些Linux常用的终端命令</p>
 <ul class="lvl-0">
 <li class="lvl-2">
@@ -773,16 +774,16 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <p>我们使用useradd命令创建了一个用户czbk</p>
 <p>useradd 可用来建立用户帐号。帐号建好之后，再用 passwd 设定帐号的密码。</p>
 <p>执行如下</p>
-<p><img src="assets/1576043805214.png" srcset="/img/loading.gif" lazyload alt="1576043805214"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576043805214.png" srcset="/img/loading.gif" lazyload alt="1576043805214"></p>
 <p>由上图我们发现，我们在使用useradd新增用户的时候，出现了权限不足，也就是说我们使用用户itcast没有创建用户的权限。</p>
 <p>我们通过管理员账号root进行创建，首先我们从控制台中切换到root</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">su root<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576042675759.png" srcset="/img/loading.gif" lazyload alt="1576042675759"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576042675759.png" srcset="/img/loading.gif" lazyload alt="1576042675759"></p>
 <p>在 密码的地方输入我们的root密码【root】即可进入到root用户下。</p>
 <p>我们在root下继续创建czbk用户</p>
-<p><img src="assets/1576043845543.png" srcset="/img/loading.gif" lazyload alt="1576043845543"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576043845543.png" srcset="/img/loading.gif" lazyload alt="1576043845543"></p>
 <p>以下是useradd常用选项</p>
-<p><img src="assets/1576049906893.png" srcset="/img/loading.gif" lazyload alt="1576049906893"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576049906893.png" srcset="/img/loading.gif" lazyload alt="1576049906893"></p>
 <h4 id="2-用户口令">2) 用户口令</h4>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">引子：<br>相当于我们在Windows系统中给个用户更改密码，只是我们在CentOS中是更改密码是通过命令完成的。<br></code></pre></td></tr></table></figure>
 <p>用户管理的一项重要内容是用户口令的管理。用户账号刚创建时没有口令，但是被系统锁定，无法使用，必须为其指定口令后才可以使用</p>
@@ -807,7 +808,7 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <p>设置当前用户的口令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">passwd czbk<br></code></pre></td></tr></table></figure>
 <p>此处我们设置密码和itcast账号密码一致，为【Itheima888】</p>
-<p><img src="assets/1576044108094.png" srcset="/img/loading.gif" lazyload alt="1576044108094"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576044108094.png" srcset="/img/loading.gif" lazyload alt="1576044108094"></p>
 <h4 id="3-修改用户">3) 修改用户</h4>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">相当于我们在Windows系统中修改一个用户，只是我们在CentOS中是修改用户是通过命令完成的。<br></code></pre></td></tr></table></figure>
 <p>usermod 命令通过修改系统帐户文件来修改用户账户信息</p>
@@ -817,9 +818,9 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">usermod 选项 用户名<br></code></pre></td></tr></table></figure>
 <p>下面命令将用户czbk用户名修改成czbk2019</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">usermod -l czbk2019  czbk<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576046509680.png" srcset="/img/loading.gif" lazyload alt="1576046509680"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576046509680.png" srcset="/img/loading.gif" lazyload alt="1576046509680"></p>
 <p>以下是usermod常用选项</p>
-<p><img src="assets/1576049946335.png" srcset="/img/loading.gif" lazyload alt="1576049946335"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576049946335.png" srcset="/img/loading.gif" lazyload alt="1576049946335"></p>
 <h4 id="4-删除用户">4) 删除用户</h4>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">相当于我们在Windows系统中删除一个用户，只是我们在CentOS中是删除用户是通过命令完成的。<br></code></pre></td></tr></table></figure>
 <p>假如我们其中一个用户的账号不再使用，可以从系统中删除。删除用户账号就是要将/etc/passwd等系统文件中的该用户记录删除，必要时还删除用户的主目录。</p>
@@ -830,14 +831,14 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <p>-r：删除用户的同时，删除与用户相关的所有文件</p>
 <p>此命令删除用户czbk2019</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">userdel czbk2019<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576047020612.png" srcset="/img/loading.gif" lazyload alt="1576047020612"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576047020612.png" srcset="/img/loading.gif" lazyload alt="1576047020612"></p>
 <p>成功删除用户czbk2019</p>
 <p>以下是userdel常用选项</p>
-<p><img src="assets/1576049978916.png" srcset="/img/loading.gif" lazyload alt="1576049978916"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576049978916.png" srcset="/img/loading.gif" lazyload alt="1576049978916"></p>
 <h3 id="2-2-2-Linux用户组">2.2.2 Linux用户组</h3>
 <p><strong>引子：</strong></p>
 <p><strong>为了方便用户管理, 提出了 组 的概念, 如下图所示</strong></p>
-<p><img src="assets/1576572808687.png" srcset="/img/loading.gif" lazyload alt="1576572808687"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576572808687.png" srcset="/img/loading.gif" lazyload alt="1576572808687"></p>
 <p><strong>新增一个账户，它默认属于自己（账户）的组</strong></p>
 <p><strong>比如新建账户【张三】，那么它默认对应的组就是张三</strong></p>
 <p><strong>一个用户可以有一个或者多个组</strong></p>
@@ -860,7 +861,7 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">groupadd czbk-it<br></code></pre></td></tr></table></figure>
 <p>上面的命令向系统中增加了一个新组czbk-it，新组的组标识号是在当前已有的最大组标识号的基础上加1</p>
 <p>以下是groupadd常用选项</p>
-<p><img src="assets/1576050003979.png" srcset="/img/loading.gif" lazyload alt="1576050003979"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576050003979.png" srcset="/img/loading.gif" lazyload alt="1576050003979"></p>
 <h4 id="2-修改用户组">2) 修改用户组</h4>
 <p><strong>使用者权限：管理员用户</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">groupmod 选项 用户组<br></code></pre></td></tr></table></figure>
@@ -878,18 +879,18 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">groupmod  -n czbk-it-2019  czbk-it<br></code></pre></td></tr></table></figure>
 <p>上面的命令将组czbk-it的组名修改为czbk-it-2019。</p>
-<p><img src="assets/1576047810973.png" srcset="/img/loading.gif" lazyload alt="1576047810973"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576047810973.png" srcset="/img/loading.gif" lazyload alt="1576047810973"></p>
 <p>以下是groupmod常用选项</p>
-<p><img src="assets/1576050645612.png" srcset="/img/loading.gif" lazyload alt="1576050645612"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576050645612.png" srcset="/img/loading.gif" lazyload alt="1576050645612"></p>
 <h4 id="3-查询用户所属组">3) 查询用户所属组</h4>
 <p>在查询用户所属的用户组前，我们先增加一个用户ituser-groups</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">useradd ituser-groups<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576050663149.png" srcset="/img/loading.gif" lazyload alt="1576050663149"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576050663149.png" srcset="/img/loading.gif" lazyload alt="1576050663149"></p>
 <p>要查询一个用户属于哪个用户组，使用groups命令，其格式如下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">groups 用户名<br></code></pre></td></tr></table></figure>
 <p>查询用户ituser-groups属于某个用户组，执行groups命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">groups ituser-groups<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576050797421.png" srcset="/img/loading.gif" lazyload alt="1576050797421"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576050797421.png" srcset="/img/loading.gif" lazyload alt="1576050797421"></p>
 <p>由此可见，ituser-groups用户属于用户组ituser-groups（用户组默认与用户名一样）</p>
 <h4 id="4-删除用户组">4) 删除用户组</h4>
 <p><strong>使用者权限：管理员用户</strong></p>
@@ -897,16 +898,16 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">groupdel 用户组<br></code></pre></td></tr></table></figure>
 <p>删除czbk-it-2019用户组</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">groupdel czbk-it-2019<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576051028346.png" srcset="/img/loading.gif" lazyload alt="1576051028346"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576051028346.png" srcset="/img/loading.gif" lazyload alt="1576051028346"></p>
 <p>删除成功</p>
 <p>以下是groupdel常用选项</p>
-<p><img src="assets/1576050031859.png" srcset="/img/loading.gif" lazyload alt="1576050031859"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576050031859.png" srcset="/img/loading.gif" lazyload alt="1576050031859"></p>
 <h3 id="2-2-3-将用户添加到组">2.2.3 将用户添加到组</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs">引子：<br>在上面我们学习如何新增用户，也学习了如何新增用户组，在当前的小节中，我们新建一个用户、新建一个用户组、然后把新建的用户添加到新的组中<br>在实际开发过程中，我们通常把多个用户按照业务需求归并到统一的一个组中，进行有序管理<br></code></pre></td></tr></table></figure>
 <p>1、创建一个新的组，并添加组ID（需要切换到root用户）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">groupadd -g 8888 itbj2020group<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576137760529.png" srcset="/img/loading.gif" lazyload alt="1576137760529"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576137760529.png" srcset="/img/loading.gif" lazyload alt="1576137760529"></p>
 <p>2、创建3个用户（需要切换到root用户）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">useradd  itbeijinguser1<br>useradd  itbeijinguser2<br>useradd  itbeijinguser3<br></code></pre></td></tr></table></figure>
 <p>3、将上面三个用户添加到组itbj2020group</p>
@@ -918,7 +919,7 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <p><strong>将上面的三个用户使用gpasswd添加到组（需要切换到root用户）</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">gpasswd -a itbeijinguser1 itbj2020group<br>gpasswd -a itbeijinguser2 itbj2020group<br>gpasswd -a itbeijinguser3 itbj2020group<br></code></pre></td></tr></table></figure>
 <p><strong>执行如下</strong></p>
-<p><img src="assets/1576139901757.png" srcset="/img/loading.gif" lazyload alt="1576139901757"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576139901757.png" srcset="/img/loading.gif" lazyload alt="1576139901757"></p>
 <p><strong>查看用户组下所有用户（所有用户）</strong></p>
 <blockquote>
 <p>注意</p>
@@ -926,7 +927,7 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep &#x27;itbj2020group&#x27; /etc/group<br></code></pre></td></tr></table></figure>
 <p>执行效果如下（或者直接打开/etc/group文件都可以）</p>
-<p><img src="assets/1576139987480.png" srcset="/img/loading.gif" lazyload alt="1576139987480"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576139987480.png" srcset="/img/loading.gif" lazyload alt="1576139987480"></p>
 <p>由上图可知：三个用户全部都加入到了itbj2020group组。</p>
 <h2 id="2-3-系统管理">2.3 系统管理</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">系统管理，说的就是我们的CentOS系统，它不同于Windwos，CentOS是字符界面，我们需要通过命令进行操作，在当前章节，我们先从基本命令学起，比如创建用户、设置密码、修改用户以及用户组的相关操作。也为我们后面的章节打下基础<br></code></pre></td></tr></table></figure>
@@ -945,10 +946,10 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <p>1、设置时间</p>
 <p>用 -s选项可以设置系统时间，如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">date -s &quot;2019-12-11 16:15:00&quot;<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576052178420.png" srcset="/img/loading.gif" lazyload alt="1576052178420"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576052178420.png" srcset="/img/loading.gif" lazyload alt="1576052178420"></p>
 <p>2、显示时间</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">date<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576052234012.png" srcset="/img/loading.gif" lazyload alt="1576052234012"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576052234012.png" srcset="/img/loading.gif" lazyload alt="1576052234012"></p>
 <p><strong>（1）UTC</strong></p>
 <p>协调世界时，又称世界统一时间、世界标准时间、国际协调时间。由于英文（CUT）和法文（TUC）的缩写不同，作为妥协，简称UTC。。</p>
 <p><strong>（2）GMT</strong></p>
@@ -978,7 +979,7 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 </ul>
 <p>显示登录账号的信息</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">logname<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576053311351.png" srcset="/img/loading.gif" lazyload alt="1576053311351"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576053311351.png" srcset="/img/loading.gif" lazyload alt="1576053311351"></p>
 <h3 id="2-3-3-su切换账户">2.3.3 su切换账户</h3>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata">引子：<br>比如我们在新增用户、修改用户或者操作用户组的时候常常需要切换到管理员账户，这个时候，我们就可以使用<span class="hljs-keyword">su</span>进行快速切换<br></code></pre></td></tr></table></figure>
 <p>su命令用于变更为其他使用者的身份，除 root 外，需要键入该使用者的密码。</p>
@@ -987,10 +988,10 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">su <br></code></pre></td></tr></table></figure>
 <p>变更帐号为 root 并在执行 ls 指令后退出返回原使用者</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">su -c ls root<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576054831537.png" srcset="/img/loading.gif" lazyload alt="1576054831537"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576054831537.png" srcset="/img/loading.gif" lazyload alt="1576054831537"></p>
 <p>切换到root</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">su root<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576054846742.png" srcset="/img/loading.gif" lazyload alt="1576054846742"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576054846742.png" srcset="/img/loading.gif" lazyload alt="1576054846742"></p>
 <p>这样的话，我们就进入到了root用户下。</p>
 <h3 id="2-3-4-id命令">2.3.4 id命令</h3>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">我们如果需要查看当前账号详细信息的时候，比如查看它的用户<span class="hljs-built_in">id</span>、群组<span class="hljs-built_in">id</span>以及所属组的时候，我们就可以使用<span class="hljs-built_in">id</span>命令进行查看<br></code></pre></td></tr></table></figure>
@@ -1026,7 +1027,7 @@ Red Hat Linux的安装过程也十分简单明了。它的图形安装过程提�
 <p><strong>显示当前用户信息</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">id<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576578213110.png" srcset="/img/loading.gif" lazyload alt="1576578213110"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576578213110.png" srcset="/img/loading.gif" lazyload alt="1576578213110"></p>
 <blockquote>
 <p>总结</p>
 <p>id命令参数虽然很多</p>
@@ -1086,24 +1087,24 @@ sudo command</p>
 </ul>
 <p>sudo命令使用</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo ls<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576056341831.png" srcset="/img/loading.gif" lazyload alt="1576056341831"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576056341831.png" srcset="/img/loading.gif" lazyload alt="1576056341831"></p>
 <p>指定root用户执行指令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo -u root ls -l<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576056180063.png" srcset="/img/loading.gif" lazyload alt="1576056180063"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576056180063.png" srcset="/img/loading.gif" lazyload alt="1576056180063"></p>
 <p><strong>修改网卡配置文件</strong></p>
 <p>比如，在下面的例子中，我们使用普通用户修改网卡的配置文件，在进行保存的时候，提示我们【无法打开并写入文件】，那么此时，我们可以通过sudo命令来提升自己的写入权限</p>
 <p>执行：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/sysconfig/network-scripts/ifcfg-ens33 <br></code></pre></td></tr></table></figure>
 <p>执行效果如下（保存）</p>
-<p><img src="assets/1576494207598.png" srcset="/img/loading.gif" lazyload alt="1576494207598"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576494207598.png" srcset="/img/loading.gif" lazyload alt="1576494207598"></p>
 <p>然后点击回车</p>
-<p><img src="assets/1576493914410.png" srcset="/img/loading.gif" lazyload alt="1576493914410"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576493914410.png" srcset="/img/loading.gif" lazyload alt="1576493914410"></p>
 <p>那么我们在修改上面的 命令，使用sudo进行修改</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo   vi /etc/sysconfig/network-scripts/ifcfg-ens33 <br></code></pre></td></tr></table></figure>
 <p>执行效果如下（键入itcast密码）</p>
-<p><img src="assets/1576494108199.png" srcset="/img/loading.gif" lazyload alt="1576494108199"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576494108199.png" srcset="/img/loading.gif" lazyload alt="1576494108199"></p>
 <p>执行保存</p>
-<p><img src="assets/1576494276066.png" srcset="/img/loading.gif" lazyload alt="1576494276066"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576494276066.png" srcset="/img/loading.gif" lazyload alt="1576494276066"></p>
 <p>我们发现此时就不在报错了</p>
 <h3 id="2-3-6-top命令">2.3.6 top命令</h3>
 <figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">在企业级开发中，开发人员（运维人员也会经常使用）常常为了查看服务器上运行的程序占用的<span class="hljs-meta">CPU</span>情况以及占用内存情况，目的就是检测我们的程序是否在正常范围内运行<br></code></pre></td></tr></table></figure>
@@ -1112,7 +1113,7 @@ sudo command</p>
 <p><strong>显示进程信息</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">top<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576495173035.png" srcset="/img/loading.gif" lazyload alt="1576495173035"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576495173035.png" srcset="/img/loading.gif" lazyload alt="1576495173035"></p>
 <p><strong>各进程（任务）的状态监控属性解释说明：</strong><br>
 PID — 进程id<br>
 USER — 进程所有者<br>
@@ -1129,11 +1130,11 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p><strong>显示完整命令，与top命令不同的就是command属性像是进行了命令补全</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">top -c<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576544383182.png" srcset="/img/loading.gif" lazyload alt="1576544383182"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576544383182.png" srcset="/img/loading.gif" lazyload alt="1576544383182"></p>
 <p><strong>显示指定的进程信息，以下显示进程号为6972的进程信息，CPU、内存占用率等</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">top -p 6972<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576544720729.png" srcset="/img/loading.gif" lazyload alt="1576544720729"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576544720729.png" srcset="/img/loading.gif" lazyload alt="1576544720729"></p>
 <blockquote>
 <p>top命令的用法很多</p>
 <p>但是常用的就是top（不带参数），有的时候，在进程比较多的时候，我们常常记住进程的pid，然后通过top -p pid进行查看</p>
@@ -1228,10 +1229,10 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">shutdown -h now<br>或者<br>shudown<br></code></pre></td></tr></table></figure>
 <p>指定1分钟后关机，1分钟关机并显示警告信息</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">shutdown +1 “System will shutdown after 1 minutes” <br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576059932470.png" srcset="/img/loading.gif" lazyload alt="1576059932470"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576059932470.png" srcset="/img/loading.gif" lazyload alt="1576059932470"></p>
 <p>指定1分钟后重启，并发出警告信息</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">shutdown –r +1 “1分钟后关机重启”<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576060232485.png" srcset="/img/loading.gif" lazyload alt="1576060232485"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576060232485.png" srcset="/img/loading.gif" lazyload alt="1576060232485"></p>
 <h3 id="2-3-10-重启命令">2.3.10 重启命令</h3>
 <p>reboot命令用于用来重新启动计算机</p>
 <p>使用者权限：管理员、普通（需要验证）用户</p>
@@ -1258,7 +1259,7 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p>开始重新启动</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">reboot<br></code></pre></td></tr></table></figure>
 <p>重启效果如下</p>
-<p><img src="assets/1576136722927.png" srcset="/img/loading.gif" lazyload alt="1576136722927"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576136722927.png" srcset="/img/loading.gif" lazyload alt="1576136722927"></p>
 <p>此时我们的虚拟机正在重启**（别忘记使用root用户执行）**</p>
 <h3 id="2-3-11-who命令">2.3.11 who命令</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">在企业级开发过程中，我们使用<span class="hljs-built_in">who</span>命令的时候常常需要快速重启服务器，在重启之前需要检测下有没有终端在连接（处理程序），如果有，可能就不会重启（会私下询问何时弄完，弄完后在重启），如果没有其他人连接，将执行快速重启<br></code></pre></td></tr></table></figure>
@@ -1295,38 +1296,38 @@ COMMAND — 进程名称（命令名/命令行）</p>
 </ul>
 <p>显示当前登录系统的用户</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">who<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576143161044.png" srcset="/img/loading.gif" lazyload alt="1576143161044"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576143161044.png" srcset="/img/loading.gif" lazyload alt="1576143161044"></p>
 <p>显示明细(标题)信息</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">who -H<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576143218612.png" srcset="/img/loading.gif" lazyload alt="1576143218612"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576143218612.png" srcset="/img/loading.gif" lazyload alt="1576143218612"></p>
 <p>由上图可知，截止到现在只有itcast在线。</p>
 <h3 id="2-3-12-timedatectl命令">2.3.12 timedatectl命令</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs">引子：<br>timedatectl是用于控制系统时间和日期。可以用来查询和更改系统时钟于设定，同时可以设定和修改时区信息。<br><br>在实际开发过程中，系统时间的显示会和实际出现不同步；我们一般为了校正服务器时间、时区的时候会使用timedatectl命令<br></code></pre></td></tr></table></figure>
 <p>使用者权限：所有使用者都可使用，设置时间需要管理员，下面会标注。</p>
 <p>几个常见的概念，进行总结如下：</p>
-<p><img src="assets/1576550880532.png" srcset="/img/loading.gif" lazyload alt="1576550880532"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576550880532.png" srcset="/img/loading.gif" lazyload alt="1576550880532"></p>
 <p><strong>显示系统的当前时间和日期，使用命令行中的timedatectl命令</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs SHELL">timedatectl status<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576147390352.png" srcset="/img/loading.gif" lazyload alt="1576147390352"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576147390352.png" srcset="/img/loading.gif" lazyload alt="1576147390352"></p>
 <p>在上面的示例中，分别显示时区、CST时间和UTC时间，其中,RTC time就是硬件时钟的时间，硬件时间默认为UTC。</p>
 <p><strong>查看当前时区</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">timedatectl | grep Time<br>或者<br>timedatectl <br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576147504533.png" srcset="/img/loading.gif" lazyload alt="1576147504533"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576147504533.png" srcset="/img/loading.gif" lazyload alt="1576147504533"></p>
 <p>上图显示中国时区</p>
 <p><strong>查看所有可用的时区</strong></p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">timedatectl list-timezones</span><br></code></pre></td></tr></table></figure>
 <p>执行效果如下（下面数据没有截全）</p>
-<p><img src="assets/1576147567622.png" srcset="/img/loading.gif" lazyload alt="1576147567622"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576147567622.png" srcset="/img/loading.gif" lazyload alt="1576147567622"></p>
 <p><strong>设置本地时区</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">timedatectl set-timezone &quot;Asia/Shanghai&quot;<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576147666007.png" srcset="/img/loading.gif" lazyload alt="1576147666007"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576147666007.png" srcset="/img/loading.gif" lazyload alt="1576147666007"></p>
 <p><strong>禁用时间同步（使用管理员账户）</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">timedatectl set-ntp false<br>在执行<br>timedatectl set-time &quot;2019-03-11 20:45:00&quot;<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576148429123.png" srcset="/img/loading.gif" lazyload alt="1576148429123"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576148429123.png" srcset="/img/loading.gif" lazyload alt="1576148429123"></p>
 <blockquote>
 <p>注意: 如果ntp时间同步为true时无法修改时间设定，下面马上介绍</p>
 </blockquote>
@@ -1334,15 +1335,15 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">timedatectl set-ntp true<br>在执行<br>timedatectl set-time &quot;2019-03-11 20:45:00&quot;<br></code></pre></td></tr></table></figure>
 <p>执行效果如下（ntp时间同步为true时无法修改时间设定）</p>
 <p>报错信息 如下</p>
-<p><img src="assets/1576226884267.png" srcset="/img/loading.gif" lazyload alt="1576226884267"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576226884267.png" srcset="/img/loading.gif" lazyload alt="1576226884267"></p>
 <p><strong>启用时间同步</strong></p>
 <p>NTP即Network Time Protocol（网络时间协议），是一个互联网协议，用于同步计算机之间的系统时钟。timedatectl实用程序可以自动同步你的Linux系统时钟到使用NTP的远程服务器。</p>
 <p>要开始自动时间同步到远程NTP服务器，在终端键入以下命令。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">timedatectl set-ntp true<br></code></pre></td></tr></table></figure>
 <p>比如，在上面我们使用timedatectl set-time “2019-03-11 20:45:00”，如下图</p>
-<p><img src="assets/1576229638059.png" srcset="/img/loading.gif" lazyload alt="1576229638059"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576229638059.png" srcset="/img/loading.gif" lazyload alt="1576229638059"></p>
 <p>此时我们执行timedatectl set-ntp true，发现时间正常同步过来了如下图</p>
-<p><img src="assets/1576229679265.png" srcset="/img/loading.gif" lazyload alt="1576229679265"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576229679265.png" srcset="/img/loading.gif" lazyload alt="1576229679265"></p>
 <p>要禁用NTP时间同步，在终端键入以下命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">timedatectl set-ntp false<br></code></pre></td></tr></table></figure>
 <p>执行上面的 命令即可关闭ntp</p>
@@ -1357,9 +1358,9 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p><strong>语法</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">clear<br></code></pre></td></tr></table></figure>
 <p>执行clear前</p>
-<p><img src="assets/1576230100277.png" srcset="/img/loading.gif" lazyload alt="1576230100277"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576230100277.png" srcset="/img/loading.gif" lazyload alt="1576230100277"></p>
 <p>执行clear后</p>
-<p><img src="assets/1576230123895.png" srcset="/img/loading.gif" lazyload alt="1576230123895"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576230123895.png" srcset="/img/loading.gif" lazyload alt="1576230123895"></p>
 <p>通过执行clear命令，就可以把缓冲区的命令全部清理干净了</p>
 <h3 id="2-3-14-exit命令"><strong>2.3.14 exit命令</strong></h3>
 <p>exit命令用于退出目前的shell。</p>
@@ -1419,9 +1420,9 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <h4 id="1-ls-列出目录">1) ls (列出目录)</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span>命令相当于我们在Windows系统中打开磁盘、或者打开文件夹看到的目录以及文件的明细，如下图<br></code></pre></td></tr></table></figure>
 <p>【查看磁盘下的目录与文件】</p>
-<p><img src="assets/1576564124577.png" srcset="/img/loading.gif" lazyload alt="1576564124577"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576564124577.png" srcset="/img/loading.gif" lazyload alt="1576564124577"></p>
 <p>【查看文件夹下的目录与文件】</p>
-<p><img src="assets/1576564161701.png" srcset="/img/loading.gif" lazyload alt="1576564161701"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576564161701.png" srcset="/img/loading.gif" lazyload alt="1576564161701"></p>
 <p>注意：在Linux系统当中， ls 命令算是比较常用的命令</p>
 <p>使用者权限：所有使用者都可使用。</p>
 <p><strong>语法如下：</strong></p>
@@ -1441,9 +1442,9 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p><strong>将根目录下的所有文件列出来(含属性与隐藏档)</strong></p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">ls</span> -<span class="hljs-keyword">al</span> ~<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576553470716.png" srcset="/img/loading.gif" lazyload alt="1576553470716"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576553470716.png" srcset="/img/loading.gif" lazyload alt="1576553470716"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576639252612.png" srcset="/img/loading.gif" lazyload alt="1576639252612"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576639252612.png" srcset="/img/loading.gif" lazyload alt="1576639252612"></p>
 <p><code>ls -l</code> 可以查看文件夹下文件的详细信息, 从左到右 依次是:</p>
 <ul class="lvl-0">
 <li class="lvl-2">
@@ -1469,18 +1470,18 @@ COMMAND — 进程名称（命令名/命令行）</p>
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576553646036.png" srcset="/img/loading.gif" lazyload alt="1576553646036"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576553646036.png" srcset="/img/loading.gif" lazyload alt="1576553646036"></p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vim">总结<br>以上三种是经常被使用到的命令<br>它们之间的区别是<br><span class="hljs-keyword">ls</span>  显示不隐藏的文件与文件夹<br><span class="hljs-keyword">ls</span> -<span class="hljs-keyword">l</span> 显示不隐藏的文件与文件夹的详细信息<br><span class="hljs-keyword">ls</span> -<span class="hljs-keyword">al</span>   显示所有文件与文件夹的详细信息<br></code></pre></td></tr></table></figure>
 <h4 id="2-pwd显示当前目录">2) pwd显示当前目录</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">执行<span class="hljs-built_in">pwd</span>命令相当于我们在Windows系统路径导航栏中查看到的当前浏览位置信息<br></code></pre></td></tr></table></figure>
 <p>如下图</p>
-<p><img src="assets/1576564294612.png" srcset="/img/loading.gif" lazyload alt="1576564294612"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576564294612.png" srcset="/img/loading.gif" lazyload alt="1576564294612"></p>
 <p>pwd 是 <strong>Print Working Directory</strong> 的缩写，也就是显示目前所在当前目录的命令。</p>
 <p>使用者权限：所有使用者都可使用。</p>
 <p><strong>查看当前所在目录</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">pwd</span> -P<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576552719245.png" srcset="/img/loading.gif" lazyload alt="1576552719245"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576552719245.png" srcset="/img/loading.gif" lazyload alt="1576552719245"></p>
 <h4 id="3-cd-切换目录">3) cd (切换目录)</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Linux的<span class="hljs-built_in">cd</span>切换目录，相当于我们在Windows中通过鼠标或者快捷键点开不同的目录<br></code></pre></td></tr></table></figure>
 <p>注意：在Linux系统当中， cd 命令算是比较常用的命令</p>
@@ -1489,7 +1490,7 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p><strong>语法如下：</strong></p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cd</span><span class="hljs-meta"> [相对路径或绝对路径]</span><br></code></pre></td></tr></table></figure>
 <p>在正式学习cd命令前面，我们通过下面一个座位图的形式讲解下相对路径和绝对路径是怎么表现的。</p>
-<p><img src="assets/1576465885337.png" srcset="/img/loading.gif" lazyload alt="1576465885337"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576465885337.png" srcset="/img/loading.gif" lazyload alt="1576465885337"></p>
 <ul class="lvl-0">
 <li class="lvl-2">
 <p><strong>绝对路径：</strong><br>
@@ -1510,10 +1511,10 @@ COMMAND — 进程名称（命令名/命令行）</p>
 </li>
 </ul>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">需求<span class="hljs-number">1</span>: 当前工作目录是 <span class="hljs-regexp">/usr, 使用相对路径 切换到 /u</span>sr/tmp 目录下 <br><br>需求<span class="hljs-number">2</span>: 当前工作目录是 <span class="hljs-regexp">/root, 使用相对路径 切换到 /u</span>sr/tmp 目录下 <br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576466126779.png" srcset="/img/loading.gif" lazyload alt="1576466126779"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576466126779.png" srcset="/img/loading.gif" lazyload alt="1576466126779"></p>
 <p>执行效果如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">注意：<br><span class="hljs-built_in">cd</span> ~ 表示回到根目录<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576466284360.png" srcset="/img/loading.gif" lazyload alt="1576466284360"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576466284360.png" srcset="/img/loading.gif" lazyload alt="1576466284360"></p>
 <p><strong>2、使用绝对路径定位目标</strong></p>
 <ul class="lvl-0">
 <li class="lvl-2">
@@ -1524,9 +1525,9 @@ COMMAND — 进程名称（命令名/命令行）</p>
 </li>
 </ul>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">需求<span class="hljs-number">1</span>: 当前工作目录是 <span class="hljs-regexp">/usr, 使用绝对路径 切换到 /u</span>sr/tmp 目录下 <br><br>需求<span class="hljs-number">2</span>: 当前工作目录是 <span class="hljs-regexp">/root, 使用绝对路径 切换到 /u</span>sr/tmp 目录下 <br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576466413099.png" srcset="/img/loading.gif" lazyload alt="1576466413099"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576466413099.png" srcset="/img/loading.gif" lazyload alt="1576466413099"></p>
 <p>执行效果如下</p>
-<p><img src="assets/1576466506750.png" srcset="/img/loading.gif" lazyload alt="1576466506750"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576466506750.png" srcset="/img/loading.gif" lazyload alt="1576466506750"></p>
 <blockquote>
 <p>总结</p>
 <ul class="lvl-1">
@@ -1549,9 +1550,9 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p>建立一个名为jinyanlong 的子目录</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir jinyanlong<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576553229832.png" srcset="/img/loading.gif" lazyload alt="1576553229832"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576553229832.png" srcset="/img/loading.gif" lazyload alt="1576553229832"></p>
 <p>查看新建的 文件</p>
-<p><img src="assets/1576553205885.png" srcset="/img/loading.gif" lazyload alt="1576553205885"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576553205885.png" srcset="/img/loading.gif" lazyload alt="1576553205885"></p>
 <p>在工作目录下的 aaa目录中，建立一个名为 bbb的子目录。 若 aaa目录原本不存在，则建立一个。（注：本例若不加 -p，且原本 aaa目录不存在，则产生错误。）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir -p aaa/bbb<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
@@ -1560,7 +1561,7 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p>后面在讲解到yum的时候，会详细讲解</p>
 <p>此处先使用</p>
 </blockquote>
-<p><img src="assets/1576560522053.png" srcset="/img/loading.gif" lazyload alt="1576560522053"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576560522053.png" srcset="/img/loading.gif" lazyload alt="1576560522053"></p>
 <p>由上图我们发现，aaa目录被强制创建，里面包含了bbb文件。</p>
 <h4 id="5-rmdir-删空目录"><strong>5) rmdir(删空目录)</strong></h4>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino">Linux的rmdir命令相当于我们在Windows中通过鼠标或者快捷键删除文件夹。<br>稍微有点不同的就是在Linux中删除子目录的时候，如果主目录下没有了目录以及文件，会连同主目录同时删除了（需要写Linux带有P的参数）<br></code></pre></td></tr></table></figure>
@@ -1620,14 +1621,14 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p>创建aaa目录并且aaa下包含bbb目录</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir -p aaa/bbb<br>mkdir -p ccc<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576561579056.png" srcset="/img/loading.gif" lazyload alt="1576561579056"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576561579056.png" srcset="/img/loading.gif" lazyload alt="1576561579056"></p>
 <p>aaa目录下有bbb</p>
 <p>ccc下面没有目录和文件</p>
 <p><strong>2、执行复制</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cp –r aaa/*  ccc  <br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
 <p>我们将aaa下面的所有文件、目录复制到了目录c下面</p>
-<p><img src="assets/1576562978352.png" srcset="/img/loading.gif" lazyload alt="1576562978352"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576562978352.png" srcset="/img/loading.gif" lazyload alt="1576562978352"></p>
 <blockquote>
 <p>总结：</p>
 <p>用户使用该指令复制目录时，必须使用参数&quot;-r&quot;或者&quot;-R&quot;。</p>
@@ -1652,10 +1653,10 @@ COMMAND — 进程名称（命令名/命令行）</p>
 </li>
 </ul>
 <p>如果我们要删除文件可以直接使用rm命令，若删除目录则必须配合选项&quot;-r&quot;，例如：</p>
-<p><img src="assets/1576563524635.png" srcset="/img/loading.gif" lazyload alt="1576563524635"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576563524635.png" srcset="/img/loading.gif" lazyload alt="1576563524635"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">rm -r  ccc<br></code></pre></td></tr></table></figure>
 <p>执行删除，如下图</p>
-<p><img src="assets/1576563827977.png" srcset="/img/loading.gif" lazyload alt="1576563827977"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576563827977.png" srcset="/img/loading.gif" lazyload alt="1576563827977"></p>
 <blockquote>
 <p>注意</p>
 <p>文件一旦通过rm命令删除，则无法恢复，所以必须格外小心地使用该命令</p>
@@ -1676,18 +1677,18 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p>-f: 在 mv 操作要覆盖某已有的目标文件时不给任何指示;</p>
 </li>
 </ul>
-<p><img src="assets/1576565378463.png" srcset="/img/loading.gif" lazyload alt="1576565378463"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576565378463.png" srcset="/img/loading.gif" lazyload alt="1576565378463"></p>
 <p>将文件 aaa 更名为 bbb :</p>
-<p><img src="assets/1576565459075.png" srcset="/img/loading.gif" lazyload alt="1576565459075"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576565459075.png" srcset="/img/loading.gif" lazyload alt="1576565459075"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">1、创建aaa目录、<br>mkdir  aaa<br>2、开始重命名<br>mv aaa bbb<br></code></pre></td></tr></table></figure>
 <p>执行后</p>
-<p><img src="assets/1576565489569.png" srcset="/img/loading.gif" lazyload alt="1576565489569"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576565489569.png" srcset="/img/loading.gif" lazyload alt="1576565489569"></p>
 <p>将ccc目录放入ddd目录中。</p>
 <p>注意，如果ddd目录不存在，则该命令将ccc改名为ddd。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">创建ccc<br>mkdir ccc<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576565710078.png" srcset="/img/loading.gif" lazyload alt="1576565710078"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576565710078.png" srcset="/img/loading.gif" lazyload alt="1576565710078"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">开始移动<br>mv ccc/ ddd <br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576565800010.png" srcset="/img/loading.gif" lazyload alt="1576565800010"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576565800010.png" srcset="/img/loading.gif" lazyload alt="1576565800010"></p>
 <p>由上图我们发现，由于ddd目录不存在，所以在mv的时候将ccc目录改名为了ddd。</p>
 <h2 id="3-2-Linux-文件基本属性">3.2 Linux 文件基本属性</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">在Wndows系统中，我们可以选中一个文件，右键属性，可以查看到这个文件的文件类型（基本信息），以及文件的权限信息，在Linux中，它是通过不同字符的排序顺序来表示文件的类型以及权限所属信息的。<br></code></pre></td></tr></table></figure>
@@ -1695,7 +1696,7 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p>下面我们就一起学习下Linux系统不同权限的文件和目录在怎么表示的</p>
 <p>在Linux中我们可以使用ll或者ls –l命令来显示一个文件的属性以及文件所属的用户和组，如：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ls -l<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576032746450.png" srcset="/img/loading.gif" lazyload alt="1576032746450"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576032746450.png" srcset="/img/loading.gif" lazyload alt="1576032746450"></p>
 <p>实例中，bin文件的第一个属性用&quot;d&quot;表示。&quot;d&quot;在Linux中代表该文件是一个目录文件。</p>
 <p>在Linux中第一个字符代表这个文件是目录、文件或链接文件等等。</p>
 <ul class="lvl-0">
@@ -1717,7 +1718,7 @@ COMMAND — 进程名称（命令名/命令行）</p>
 </ul>
 <p>接下来的字符中，以三个为一组，且均为『rwx』 的三个参数的组合。其中，[ r ]代表可读(read)、[ w ]代表可写(write)、[ x ]代表可执行(execute)。 要注意的是，这三个权限的位置不会改变，如果没有权限，就会出现减号[ - ]而已。</p>
 <p>每个文件的属性由左边第一部分的10个字符来确定（如下图）。</p>
-<p><img src="assets/1576460571985.png" srcset="/img/loading.gif" lazyload alt="1576460571985"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576460571985.png" srcset="/img/loading.gif" lazyload alt="1576460571985"></p>
 <p>从左至右用0-9这些数字来表示。</p>
 <p>第0位确定文件类型，第1-3位确定属主（该文件的所有者）拥有该文件的权限。</p>
 <p>第4-6位确定属组（所有者的同组用户）拥有该文件的权限，第7-9位确定其他用户拥有该文件的权限。</p>
@@ -1725,7 +1726,7 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p>第2、5、8位表示写权限，如果用&quot;w&quot;字符表示，则有写权限，如果用&quot;-“字符表示没有写权限；第3、6、9位表示可执行权限，如果用&quot;x&quot;字符表示，则有执行权限，如果用”-&quot;字符表示，则没有执行权限。</p>
 <h2 id="3-3-Linux文件属主和属组">3.3 Linux文件属主和属组</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs">引子：<br>对于一个文件来说，它都有一个特定的所有者，也就是对该文件具有所有权的用户。<br>也就是所谓的属主，它属于哪个用户的意思。<br>除了属主，还有属组，也就是说，这个文件是属于哪个组的（用户所属的组）。<br>文件的【属主】有一套【读写执行权限rwx】<br>文件的【属组】有一套【读写执行权限rwx】<br>还有它权限，下面我们在介绍<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576402570345.png" srcset="/img/loading.gif" lazyload alt="1576402570345"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576402570345.png" srcset="/img/loading.gif" lazyload alt="1576402570345"></p>
 <p>在以上实例中，aaa文件是一个目录文件，属主和属组都为 itcast，属主有可读、可写、可执行的权限（rwx）；与属主同组的其他用户有可读可写和可执行的权限（rwx）；其他用户也有可读和可执行的权限（r-x）。</p>
 <h3 id="3-3-1-chgrp更改属组"><strong>3.3.1 chgrp更改属组</strong></h3>
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gcode">实际开发中我们经常会创建新建目录和文件，一般情况下，通过命令进行新建，<br>在创建完成后，使用不同的用户访问，可能就会出现报错，无法访问等等问题。<br>然后经过一番这查找,发现该有的文件都在，大小写也没问题，路径也没问题<br>其实并不是这些问题。而是权限问题导致我们无法访问！是因为一个文件默认隶属于一个属组，而使用其他用户访问这个文件肯定无法访问<span class="hljs-comment">(因为访问用户所属的组和文件所在的不是同一个组)</span><br>那么怎么可以正常访问呢？其实就是通过更改用户组（用户组、文件组）来解决这些问题<br></code></pre></td></tr></table></figure>
@@ -1737,14 +1738,14 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p><strong>改变文件的群组属性</strong></p>
 <p>我们通过root用户进入（如下图），上接上面的例子</p>
 <p>我们的aaa文件的属主和属组都属于itcast（如下图）</p>
-<p><img src="assets/1576407437975.png" srcset="/img/loading.gif" lazyload alt="1576407437975"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576407437975.png" srcset="/img/loading.gif" lazyload alt="1576407437975"></p>
 <p>我们现在通过chgrp命令将文件aaa的属组更改成root（其他也可以）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chgrp -v root aaa<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576407536566.png" srcset="/img/loading.gif" lazyload alt="1576407536566"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576407536566.png" srcset="/img/loading.gif" lazyload alt="1576407536566"></p>
 <p>我们通过下面的命令查询文件aaa的属组是否发生了变化，执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576407585301.png" srcset="/img/loading.gif" lazyload alt="1576407585301"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576407585301.png" srcset="/img/loading.gif" lazyload alt="1576407585301"></p>
 <p>由上图我们发现，文件aaa的属组由itcast变成了root</p>
 <p>这样的话，文件的属组就发生了变化。</p>
 <h3 id="3-3-2-chown更改属主和属组">3.3.2 chown更改属主和属组**</h3>
@@ -1758,17 +1759,17 @@ COMMAND — 进程名称（命令名/命令行）</p>
 <p>我们现在通过chgrp命令将文件aaa的属主更改成root，执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chown</span>  root aaa<br></code></pre></td></tr></table></figure>
 <p>效果如下</p>
-<p><img src="assets/1576407880885.png" srcset="/img/loading.gif" lazyload alt="1576407880885"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576407880885.png" srcset="/img/loading.gif" lazyload alt="1576407880885"></p>
 <p>我们通过下面的命令查询文件aaa的属主是否发生了变化，执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576407928200.png" srcset="/img/loading.gif" lazyload alt="1576407928200"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576407928200.png" srcset="/img/loading.gif" lazyload alt="1576407928200"></p>
 <p>由上图我们发现，文件aaa的属主和属组都变成了root。</p>
 <p><strong>我们将aaa文件的拥有者与群组改回为itcast：</strong></p>
 <p>注意：chown命令可以更改属主和属组</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chown</span> itcast:itcast aaa<br></code></pre></td></tr></table></figure>
 <p>我们通过下面的命令查询文件aaa的属主是否发生了变化，执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576408146911.png" srcset="/img/loading.gif" lazyload alt="1576408146911"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576408146911.png" srcset="/img/loading.gif" lazyload alt="1576408146911"></p>
 <p>由上图可知，aaa文件的属主和属组都被更改回来了。</p>
 <h3 id="3-3-3-chmod权限命令">3.3.3 chmod权限命令</h3>
 <p>Linux文件属性有两种设置方法，一种是数字，一种是符号</p>
@@ -1787,7 +1788,7 @@ r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该
 <p>Linux文件的基本权限就有九个，分别是owner/group/others三种身份各有自己的read/write/execute权限。</p>
 <p>先复习一下刚刚上面提到的数据：文件的权限字符为：『-rwxrwxrwx』， 这九个权限是三个三个一组（owner/group/others就是所说的三个一组 ）的，我们也可以使用数字来代表各个权限，各权限的分数对照表如下</p>
 <p>各权限的数字对照表：[r]:4;[w]:2;[x]:1;[-]:<strong>0</strong></p>
-<p><img src="assets/1576571902684.png" srcset="/img/loading.gif" lazyload alt="1576571902684"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576571902684.png" srcset="/img/loading.gif" lazyload alt="1576571902684"></p>
 <p>每种身份(owner/group/others)各自的三个权限(r/w/x)分数是需要累加的，例如当权限为： [-rwxrwx—] 分数则是：</p>
 <ul class="lvl-0">
 <li class="lvl-2">
@@ -1820,10 +1821,10 @@ r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">touch as.txt<br></code></pre></td></tr></table></figure>
 <p>然后切换到root</p>
 <p>比如，我们如果要将as.txt这个文件所有的权限都设定启用</p>
-<p><img src="assets/1576463267777.png" srcset="/img/loading.gif" lazyload alt="1576463267777"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576463267777.png" srcset="/img/loading.gif" lazyload alt="1576463267777"></p>
 <p>那么命令如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod -R 777 as.txt<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576463303277.png" srcset="/img/loading.gif" lazyload alt="1576463303277"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576463303277.png" srcset="/img/loading.gif" lazyload alt="1576463303277"></p>
 <p>由此可见，as.txt的属主权限、属组权限、其他权限都发生了改变</p>
 <p>由之前的【-rw-rw-r–】变成【-rwxrwxrwx】</p>
 <blockquote>
@@ -1844,19 +1845,19 @@ r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该
 </ul>
 <p>那么我们就可以使用 <strong>u, g, o</strong> 来代表三种身份的权限！</p>
 <p>此外， <strong>a</strong> 则代表 <strong>all</strong>，即全部的身份。读写的权限可以写成 <strong>r, w, x</strong>，也就是可以使用下表的方式来看</p>
-<p><img src="assets/1576464280724.png" srcset="/img/loading.gif" lazyload alt="1576464280724"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576464280724.png" srcset="/img/loading.gif" lazyload alt="1576464280724"></p>
 <p>如果我们需要将文件权限设置为 <strong>-rwxr-xr–</strong> ，可以使用 <strong>chmod u=rwx,g=rx,o=r 文件名</strong> 来设定:</p>
 <p>上接上面的例子，如下图</p>
 <p>我们将as.txt的权限设置为**-rwxr-xr–**</p>
-<p><img src="assets/1576464462903.png" srcset="/img/loading.gif" lazyload alt="1576464462903"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576464462903.png" srcset="/img/loading.gif" lazyload alt="1576464462903"></p>
 <p>执行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod u=rwx,g=rx,o=r  as.txt<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576464626496.png" srcset="/img/loading.gif" lazyload alt="1576464626496"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576464626496.png" srcset="/img/loading.gif" lazyload alt="1576464626496"></p>
 <p>由上图我们发现，as.txt的权限变成了-rwxr-xr–</p>
 <p>假如我们要将权限去掉而不改变其他已存在的权限呢？举个例子，比如我要拿掉全部人的可读权限，则</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs SHELL">chmod  a-r as.txt<br></code></pre></td></tr></table></figure>
 <p>执行如下</p>
-<p><img src="assets/1576464852969.png" srcset="/img/loading.gif" lazyload alt="1576464852969"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576464852969.png" srcset="/img/loading.gif" lazyload alt="1576464852969"></p>
 <p>由此可见，as.txt的其他权限都没有了，变成了【—】</p>
 <h2 id="3-4-综合案例">3.4 综合案例</h2>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">在前面的章节中我们讲解了用户、用户组、文件属主、属组以及权限，知识点比较零散，下面，我们就通过一个简单小案例把这些知识点串联起来<br></code></pre></td></tr></table></figure>
@@ -1865,37 +1866,37 @@ r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该
 <p><strong>1、首先，我们创建三个账户</strong>（切换到root）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">adduser java<br>adduser erlang<br>adduser golang<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576587867858.png" srcset="/img/loading.gif" lazyload alt="1576587867858"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576587867858.png" srcset="/img/loading.gif" lazyload alt="1576587867858"></p>
 <p><strong>2、增加用户组</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">groupadd -g 8888 dev-group<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576588353612.png" srcset="/img/loading.gif" lazyload alt="1576588353612"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588353612.png" srcset="/img/loading.gif" lazyload alt="1576588353612"></p>
 <p><strong>3、创建公共文件并设置权限</strong></p>
 <p>给文件/tmp/project2019/设置属组为dev-group</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir /tmp/project2019<br><br>chown -R :dev-group /tmp/project2019/<br>或者<br>chgrp -R dev-group  /tmp/project2019/<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576588480909.png" srcset="/img/loading.gif" lazyload alt="1576588480909"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588480909.png" srcset="/img/loading.gif" lazyload alt="1576588480909"></p>
 <p><strong>4、将用户添加到组</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">gpasswd -a java    dev-group<br>gpasswd -a erlang  dev-group<br>gpasswd -a golang  dev-group<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576588553969.png" srcset="/img/loading.gif" lazyload alt="1576588553969"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588553969.png" srcset="/img/loading.gif" lazyload alt="1576588553969"></p>
 <p>查询dev-group组下所有用户</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">grep &#x27;dev-group&#x27; /etc/group<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576588591503.png" srcset="/img/loading.gif" lazyload alt="1576588591503"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588591503.png" srcset="/img/loading.gif" lazyload alt="1576588591503"></p>
 <p><strong>5、切换到java用户</strong></p>
 <p>切换到java用户看看是否有写入权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">su java<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576588731114.png" srcset="/img/loading.gif" lazyload alt="1576588731114"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588731114.png" srcset="/img/loading.gif" lazyload alt="1576588731114"></p>
 <p>新建文件</p>
 <p>在我们上面创建的目录tmp/project2019/下面创建文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir java-files-new<br></code></pre></td></tr></table></figure>
-<p><img src="assets/1576588941546.png" srcset="/img/loading.gif" lazyload alt="1576588941546"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576588941546.png" srcset="/img/loading.gif" lazyload alt="1576588941546"></p>
 <p>由此发现，我们在tmp/project2019/下面创建文件发生了权限不足，我们去查看下tmp/project2019/的文件属性，如下图</p>
 <p>我们在/tmp目录下执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576589157095.png" srcset="/img/loading.gif" lazyload alt="1576589157095"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589157095.png" srcset="/img/loading.gif" lazyload alt="1576589157095"></p>
 <p>我们发现目录project2019的文件属性为【drwxr-xr-x】</p>
 <p>根据前面学的知识，我们拆分如下</p>
 <p>【d】:文件类型</p>
@@ -1907,28 +1908,28 @@ r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该
 <p>给project2019目录增加写入权限，执行下面的命令（前面已经学习过了）</p>
 <p>记得切换到root下执行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod  -R 770  project2019<br></code></pre></td></tr></table></figure>
-<p>执行效果如下<img src="assets/1576589467908.png" srcset="/img/loading.gif" lazyload alt="1576589467908"></p>
+<p>执行效果如下<img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589467908.png" srcset="/img/loading.gif" lazyload alt="1576589467908"></p>
 <p>此时我们发现project2019目录的属组权限变成了【rwx】即可读、可写、可执行</p>
 <p><strong>7、切换用户，继续写入</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">su  java<br>mkdir java-files-new<br>ls -l<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576589641341.png" srcset="/img/loading.gif" lazyload alt="1576589641341"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589641341.png" srcset="/img/loading.gif" lazyload alt="1576589641341"></p>
 <p>由此发现，这个时候我们有了写入权限，java-files-new文件被成功写入</p>
 <p>那么，其他两个用户golang、erlang也是和java一个组的，他们能不能正常写入呢，我们试试（从root切换过去）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">su<br>su erlang<br>mkdir erlang-files-new<br>==============================<br>su<br>su golang<br>mkdir golang-files-new<br><br>ls -l<br></code></pre></td></tr></table></figure>
 <p>执行效果（erlang新建文件）</p>
-<p><img src="assets/1576589820604.png" srcset="/img/loading.gif" lazyload alt="1576589820604"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589820604.png" srcset="/img/loading.gif" lazyload alt="1576589820604"></p>
 <p>执行效果（golanglang新建文件）</p>
-<p><img src="assets/1576589856968.png" srcset="/img/loading.gif" lazyload alt="1576589856968"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589856968.png" srcset="/img/loading.gif" lazyload alt="1576589856968"></p>
 <p>查看所有文件</p>
-<p><img src="assets/1576589903617.png" srcset="/img/loading.gif" lazyload alt="1576589903617"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576589903617.png" srcset="/img/loading.gif" lazyload alt="1576589903617"></p>
 <p>由此可见，我们组的三个用户都成功创建了文件（拥有了写入权限）</p>
 <p><strong>8、验证结论</strong></p>
 <p>为了验证上面的结论，我们新增一个用户itbeijing</p>
 <p>看看能否正常新建文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">useradd   itbeijing<br>su itbeijing<br>mkdir  itbeijing-files-new<br></code></pre></td></tr></table></figure>
 <p>执行效果如下</p>
-<p><img src="assets/1576590031376.png" srcset="/img/loading.gif" lazyload alt="1576590031376"></p>
+<p><img src="/2022/12/29/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/1576590031376.png" srcset="/img/loading.gif" lazyload alt="1576590031376"></p>
 <p>由上图我们发现，我们刚刚新创建的用户在创建文件的时候发现了权限不足。</p>
 <p>由此说明用户itbeijing用户的属组和文件的属组不一样，所以没有权限。</p>
 <h2 id="3-5-总结">3.5 总结</h2>

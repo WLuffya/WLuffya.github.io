@@ -11,6 +11,7 @@
   <link rel="icon" href="/img/icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="referrer" content="no-referrer">
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="WLuffya">
@@ -23,19 +24,19 @@
 <meta property="og:site_name" content="WLuffya Blog">
 <meta property="og:description" content="Hadoop搭建 1. 关闭防火墙selinux 1234567891011[root@master ~]# systemctl stop firewalld[root@master ~]# systemctl disable firewalld[root@master ~]# setenforce 0[root@slaver ~]# systemctl stop firewalld.servic">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/assets/clip_image002.jpg">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/assets/clip_image004.jpg">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/assets/clip_image004.jpg">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/assets/clip_image006.jpg">
-<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/assets/clip_image008.jpg">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image002.jpg">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image004.jpg">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image004.jpg">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image006.jpg">
+<meta property="og:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image008.jpg">
 <meta property="article:published_time" content="2022-12-29T13:33:42.000Z">
-<meta property="article:modified_time" content="2022-12-29T13:34:48.753Z">
+<meta property="article:modified_time" content="2023-02-08T12:53:21.769Z">
 <meta property="article:author" content="WLuffya">
 <meta property="article:tag" content="运维">
 <meta property="article:tag" content="大数据">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/assets/clip_image002.jpg">
+<meta name="twitter:image" content="https://wluffya.github.io/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image002.jpg">
   
   
   
@@ -322,15 +323,15 @@
 <p><strong>hadoop.tmp.dir****是hadoop文件系统依赖的基础配置，很多路径都依赖它。它默认的位置是在/tmp/{$user}下面，但是在/tmp路径下的存储是不安全的，因为linux一次重启，文件就可能被删除。</strong></p>
 <p><strong>dfs.replication****配置的是HDFS存储时的备份数量</strong></p>
 <p><configuration>  <property>   <name>dfs.namenode.data.dir</name>   <value>/file:///data/hadoop/hdfs/name</value>  </property>  <property>  <name>dfs.datanode.data.dir</name>  <value>/file:///data/hadoop/hdfs/data</value>  </property>  <property>  <name>dfs.namenode.secondary.http-address</name>  <value>master:50090</value>  </property>  <property>  <name>dfs.replication</name>  <value>2</value>  </property>  </configuration></p>
-<p><img src="./assets/clip_image002.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image002.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>[root@master hadoop]# vi yarn-site.xml</p>
-<p><img src="./assets/clip_image004.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image004.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>yarn.nodemanager.aux-services<strong><strong>是</strong></strong>NodeManager<strong><strong>上运行的附属服务。它</strong></strong>的默认值是“<strong><strong>mapreduce.shuffle</strong></strong>”<strong><strong>，但如果继续使用这个值，NodeManager 会启动失败，所以需要改为改为“<strong><strong>mapreduce_shuffle</strong></strong>”</strong></strong>。</strong></p>
 <p><strong>yarn.resourcemanager.webapp.address****是</strong><code>**ResourceManager**</code><strong>对外web ui地址。用户可通过该地址在浏览器中查看集群各类信息。</strong></p>
-<p><img src="./assets/clip_image004.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image004.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><configuration>  <property>  <name>yarn.nodemanager.aux-services</name>  <value>mapreduce_shuffle</value>  </property>  </configuration></p>
 <p>[root@master hadoop]# vi mapred-site.xml</p>
-<p><img src="./assets/clip_image006.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image006.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong><a target="_blank" rel="noopener" href="http://mapreduce.framework.name">mapreduce.framework.name</a>****指的是使用yarn运行mapreduce程序。</strong></p>
 <p><configuration>  <property>  <name>mapreduce.framework.name</name>  <value>yarn</value>  </property>  <property>  <name>mapreduce.jobhistroy.address</name>  <value>master:10020</value>  </property>  <property>  <name>mapreduce.jobhistroy.webapp.address</name>  <value>master:19888</value>  </property>  </configuration></p>
 <p>[root@master hadoop]# vi slaves</p>
@@ -341,7 +342,7 @@
 <p>[root@master hadoop]# scp -r /root/hadoop slaver:/root/</p>
 <h3 id="8-格式化启动">8. 格式化启动</h3>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs awk">[root@master hadoop]<span class="hljs-comment"># hdfs namenode –format</span><br>  <span class="hljs-regexp">/usr/</span>hadoop<span class="hljs-regexp">/hdfs/</span>name （如果格式化完没有需要建一下）  （格式化前如果目录里存在文件，先把两个节点    <span class="hljs-regexp">/usr/</span>hadoop<span class="hljs-regexp">/hdfs/</span>name（这个目录是格式化的时候自动生成的）   <span class="hljs-regexp">/usr/</span>hadoop<span class="hljs-regexp">/hdfs/</span>data（这个是启动的时候生成的）   <span class="hljs-regexp">/data/</span>hadoop<span class="hljs-regexp">/current/</span>tmp 里面的文件全都删掉！！！  ）     <br><br>[root@master sbin]<span class="hljs-comment"># . start-all.sh</span><br>[root@master sbin]<span class="hljs-comment"># jps</span><br><span class="hljs-number">18944</span> NodeManager<br><span class="hljs-number">19106</span> Jps<br><span class="hljs-number">18435</span> DataNode<br><span class="hljs-number">18585</span> SecondaryNameNode<br><span class="hljs-number">18730</span> ResourceManager<br><span class="hljs-number">18317</span> NameNode<br>[root@slaver ~]<span class="hljs-comment"># jps</span><br><span class="hljs-number">18227</span> DataNode<br><span class="hljs-number">18324</span> NodeManager<br><span class="hljs-number">18424</span> Jps<br>[root@master sbin]<span class="hljs-comment"># yum install -y net-tools</span><br>[root@master sbin]<span class="hljs-comment"># netstat –ntpl</span><br></code></pre></td></tr></table></figure>
-<p><img src="./assets/clip_image008.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/2022/12/29/Hadoop%E6%90%AD%E5%BB%BA/clip_image008.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="9-主节点配置时钟同步">9.主节点配置时钟同步</h3>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs routeros">yum -y install<span class="hljs-built_in"> ntp</span><br><span class="hljs-built_in"></span>vim /etc/ntp.conf<br>注释<span class="hljs-built_in"></span><br><span class="hljs-built_in">server </span>0.centos.pool.ntp.org iburst<span class="hljs-built_in"></span><br><span class="hljs-built_in">server </span>1.centos.pool.ntp.org iburst<span class="hljs-built_in"></span><br><span class="hljs-built_in">server </span>2.centos.pool.ntp.org iburst<span class="hljs-built_in"></span><br><span class="hljs-built_in">server </span>3.centos.pool.ntp.org iburst<br><br>添加<span class="hljs-built_in"></span><br><span class="hljs-built_in">server </span>127.127.1.0<br>fudge 127.127.1.0 startum 10<br> <br>启动<br>systemctl stat ntpd<br>systemctl <span class="hljs-built_in">enable</span> ntpd<br><br><br>副节点<br>yum -y install ntpdate<br>ntpdate master<br> <br><span class="hljs-comment"># Hadoop环境变量</span><br><span class="hljs-built_in">export</span><br><span class="hljs-built_in">export</span> HDFS_NAMENODE_USER<br><span class="hljs-built_in">export</span> HDFS_DATANODE_USER<br><span class="hljs-built_in">export</span> HDFS_SECONDARYNAMENODE_USER<br><span class="hljs-built_in">export</span> YARN_RESOURCEMANAGER_USER<br><span class="hljs-built_in">export</span> YARN_NODEMANAGER_USER<br></code></pre></td></tr></table></figure>
 
@@ -438,9 +439,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/29/HTML/" title="HTML">
+                      <a href="/2022/12/29/CSS/" title="CSS">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">HTML</span>
+                        <span class="hidden-mobile">CSS</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
