@@ -20,15 +20,18 @@
     <meta name="description" content="准备工作  Git配置   git config --global user.name “Your Name” git config --global user.email “email@example.com” 官网下载链接: https:&#x2F;&#x2F;git-scm.com&#x2F;downloads   nodeJs   node  -v npm -v (回显版本号则成功) 官网下载链接：https:&#x2F;&#x2F;no">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+GitHub博客搭建">
-<meta property="og:url" content="https://wluffya.github.io/2022/12/29/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8F%91%E5%B8%83/index.html">
+<meta property="og:url" content="https://wluffya.github.io/2022/12/29/Hexo+GitHub%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="WLuffya Blog">
 <meta property="og:description" content="准备工作  Git配置   git config --global user.name “Your Name” git config --global user.email “email@example.com” 官网下载链接: https:&#x2F;&#x2F;git-scm.com&#x2F;downloads   nodeJs   node  -v npm -v (回显版本号则成功) 官网下载链接：https:&#x2F;&#x2F;no">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/12889352/1675862199664-f9c8d73e-addc-4b44-9076-447767ea596f.png#averageHue=%23f7f7f6&amp;clientId=u7b4fb406-15fe-4&amp;from=paste&amp;height=453&amp;id=u327f200e&amp;name=image.png&amp;originHeight=566&amp;originWidth=1193&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=55950&amp;status=done&amp;style=none&amp;taskId=u0e327dff-1867-4fb0-b79d-73739bfc28c&amp;title=&amp;width=954.4">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/12889352/1675862237748-96cd99a2-7107-4e99-aca0-d86e733707d7.png#averageHue=%23faecb6&amp;clientId=u7b4fb406-15fe-4&amp;from=paste&amp;height=304&amp;id=ufb894328&amp;name=image.png&amp;originHeight=380&amp;originWidth=1192&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=29570&amp;status=done&amp;style=none&amp;taskId=u37c61932-b3d2-4de9-86fd-f6f5cdeae88&amp;title=&amp;width=953.6">
 <meta property="article:published_time" content="2022-12-29T07:45:28.000Z">
-<meta property="article:modified_time" content="2023-02-08T11:49:14.295Z">
+<meta property="article:modified_time" content="2023-02-08T13:23:23.609Z">
 <meta property="article:author" content="WLuffya">
 <meta property="article:tag" content="运维">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2023/png/12889352/1675862199664-f9c8d73e-addc-4b44-9076-447767ea596f.png#averageHue=%23f7f7f6&amp;clientId=u7b4fb406-15fe-4&amp;from=paste&amp;height=453&amp;id=u327f200e&amp;name=image.png&amp;originHeight=566&amp;originWidth=1193&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=55950&amp;status=done&amp;style=none&amp;taskId=u0e327dff-1867-4fb0-b79d-73739bfc28c&amp;title=&amp;width=954.4">
   
   
   
@@ -233,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          3.9k 字
         
       </span>
     
@@ -244,7 +247,7 @@
         
         
         
-          13 分钟
+          33 分钟
         
       </span>
     
@@ -352,66 +355,86 @@ hexo d # 发布</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">参数</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">默认值</th>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>layout</code></td>
-<td style="text-align:left">布局</td>
-<td style="text-align:left"><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E6%96%87%E7%AB%A0"><code>config.default_layout</code></a></td>
+<td><code>layout</code></td>
+<td>布局</td>
+<td><code>[config.default_layout](https://hexo.io/zh-cn/docs/configuration#%E6%96%87%E7%AB%A0)</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>title</code></td>
-<td style="text-align:left">标题</td>
-<td style="text-align:left">文章的文件名</td>
+<td><code>title</code></td>
+<td>标题</td>
+<td>文章的文件名</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>date</code></td>
-<td style="text-align:left">建立日期</td>
-<td style="text-align:left">文件建立日期</td>
+<td><code>date</code></td>
+<td>建立日期</td>
+<td>文件建立日期</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>updated</code></td>
-<td style="text-align:left">更新日期</td>
-<td style="text-align:left">文件更新日期</td>
+<td><code>updated</code></td>
+<td>更新日期</td>
+<td>文件更新日期</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>comments</code></td>
-<td style="text-align:left">开启文章的评论功能</td>
-<td style="text-align:left">true</td>
+<td><code>comments</code></td>
+<td>开启文章的评论功能</td>
+<td>true</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>tags</code></td>
-<td style="text-align:left">标签（不适用于分页）</td>
-<td style="text-align:left"></td>
+<td><code>tags</code></td>
+<td>标签（不适用于分页）</td>
+<td></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>categories</code></td>
-<td style="text-align:left">分类（不适用于分页）</td>
-<td style="text-align:left"></td>
+<td><code>categories</code></td>
+<td>分类（不适用于分页）</td>
+<td></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>permalink</code></td>
-<td style="text-align:left">覆盖文章网址</td>
-<td style="text-align:left"></td>
+<td><code>permalink</code></td>
+<td>覆盖文章网址</td>
+<td></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>excerpt</code></td>
-<td style="text-align:left">纯文本的页面摘要。使用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins#%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81%E5%92%8C%E6%88%AA%E6%96%AD">该插件</a> 来格式化文本</td>
-<td style="text-align:left"></td>
+<td><code>excerpt</code></td>
+<td>纯文本的页面摘要。使用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins#%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81%E5%92%8C%E6%88%AA%E6%96%AD">该插件</a></td>
+<td></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>disableNunjucks</code></td>
-<td style="text-align:left">启用时禁用 Nunjucks 标签 <code>&#123;&#123; &#125;&#125;</code>/<code>&#123;% %&#125;</code> 和 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins">标签插件</a> 的渲染功能</td>
-<td style="text-align:left"></td>
+<td>来格式化文本</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>lang</code></td>
-<td style="text-align:left">设置语言以覆盖 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/internationalization#%E8%B7%AF%E5%BE%84">自动检测</a></td>
-<td style="text-align:left">继承自 <code>_config.yml</code></td>
+<td><code>disableNunjucks</code></td>
+<td>启用时禁用 Nunjucks 标签 <code>&#123;&#123; &#125;&#125;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>/<code>&#123;% %&#125;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>和 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/tag-plugins">标签插件</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>的渲染功能</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>lang</code></td>
+<td>设置语言以覆盖 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/internationalization#%E8%B7%AF%E5%BE%84">自动检测</a></td>
+<td>继承自 <code>_config.yml</code></td>
 </tr>
 </tbody>
 </table>
@@ -425,6 +448,42 @@ hexo d # 发布</p>
 <p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p>
 <figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ldif"><span class="hljs-attribute">categories</span>:<br><span class="hljs-literal">-</span> [Diary, PlayStation]<br><span class="hljs-literal">-</span> [Diary, Games]<br><span class="hljs-literal">-</span> [Life]<br></code></pre></td></tr></table></figure>
 <p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p>
+<h2 id="踩坑">踩坑</h2>
+<ol>
+<li class="lvl-3">
+<p>博客不显示图床的图片</p>
+</li>
+</ol>
+<p>找到你的Hexo主题里面设置全局网页head信息的文件，我使用的fuild主题 这个配置文件在themes\hexo-theme-fluid-master\layout_partialshead.ejs中，在文件中添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">&lt;meta name=<span class="hljs-string">&quot;referrer&quot;</span> content=<span class="hljs-string">&quot;no-referrer&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-4">
+<p>本地图片不显示问题</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">1. _config.yml文件修改post_asser_folder为<span class="hljs-literal">true</span><br>2. 在博客md文件同文件夹中建立与其相同名的文件夹存放图片<br>(typora在偏好设置-图像里面可以设置为复制到指定路径 ./$(filename)/)<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li class="lvl-3">
+<p>美化问题</p>
+</li>
+</ol>
+<p>自定义CSS需要在:\themes\hexo-theme-fluid-master\source\css\main.styl中写</p>
+<ol start="4">
+<li class="lvl-3">
+<p>跟换markdown渲染器</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm un hexo-renderer-marked --save<br>npm i hexo-renderer-markdown-it --save<br><br><span class="hljs-comment"># 将如下文本复制粘贴到 Hexo 的配置文件 _config.yml 的尾部</span><br>markdown:<br>  preset: <span class="hljs-string">&quot;default&quot;</span><br>  render:<br>    html: <span class="hljs-literal">true</span><br>    xhtmlOut: <span class="hljs-literal">false</span><br>    langPrefix: <span class="hljs-string">&quot;language-&quot;</span><br>    breaks: <span class="hljs-literal">true</span><br>    linkify: <span class="hljs-literal">true</span><br>    typographer: <span class="hljs-literal">true</span><br>    quotes: <span class="hljs-string">&quot;“”‘’&quot;</span><br>  enable_rules:<br>  disable_rules:<br>  plugins:<br>    - markdown-it-abbr<br>    - markdown-it-cjk-breaks<br>    - markdown-it-deflist<br>    - markdown-it-emoji<br>    - markdown-it-footnote<br>    - markdown-it-ins<br>    - markdown-it-mark<br>    - markdown-it-sub<br>    - markdown-it-sup<br>    - markdown-it-checkbox<br>    - markdown-it-imsize<br>    - markdown-it-expandable<br>    - name: markdown-it-container<br>      options: success<br>    - name: markdown-it-container<br>      options: tips<br>    - name: markdown-it-container<br>      options: warning<br>    - name: markdown-it-container<br>      options: danger<br>  anchors:<br>    level: 2<br>    collisionSuffix: <span class="hljs-string">&quot;&quot;</span><br>    permalink: <span class="hljs-literal">false</span><br>    permalinkClass: <span class="hljs-string">&quot;header-anchor&quot;</span><br>    permalinkSide: <span class="hljs-string">&quot;left&quot;</span><br>    permalinkSymbol: <span class="hljs-string">&quot;¶&quot;</span><br>    <span class="hljs-keyword">case</span>: 0<br>    separator: <span class="hljs-string">&quot;-&quot;</span><br><br><span class="hljs-comment"># 安装插件</span><br>npm i markdown-it-checkbox<br>npm i markdown-it-imsize<br>npm i markdown-it-expandable<br><br><br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/12889352/1675862199664-f9c8d73e-addc-4b44-9076-447767ea596f.png#averageHue=%23f7f7f6&amp;clientId=u7b4fb406-15fe-4&amp;from=paste&amp;height=453&amp;id=u327f200e&amp;name=image.png&amp;originHeight=566&amp;originWidth=1193&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=55950&amp;status=done&amp;style=none&amp;taskId=u0e327dff-1867-4fb0-b79d-73739bfc28c&amp;title=&amp;width=954.4" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<ol start="5">
+<li class="lvl-3">
+<p>自定义容器</p>
+</li>
+</ol>
+<p>更换渲染器安装的里面自带 markdown-it-container：自定义容器插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 语法</span><br>::: tips<br>**提示**<br>这是一个提示<br>:::<br><br>::: warning<br>**注意**<br>这是一个警告<br>:::<br><br>::: danger<br>**警告**<br>这是一个危险信号<br>:::<br><br>::: success<br>**成功**<br>这是一个成功信号<br>:::<br><br><span class="hljs-comment"># CSS文件修改样式</span><br><span class="hljs-comment"># \themes\hexo-theme-fluid-master\source\css\main.styl中写</span><br>.tips &#123;<br>    padding-left: 10px;<br>    background-color rgba(52,152,219,.3);<br>    border-left 4px solid rgb(52,152,219);<br>    color: darken(rgb(52,152,219),20%);<br>&#125;<br>.success &#123;<br>    padding-left: 10px;<br>    background-color rgba(46,204,113,.3);<br>    border-left 4px solid rgb(46,204,113);<br>    color: darken(rgb(46,204,113),20%);<br>&#125;<br>.warning &#123;<br>    padding-left: 10px;<br>    background-color rgba(241,196,15,.3);<br>    border-left 4px solid rgb(241,196,15);<br>    color: darken(rgb(241,196,15),20%);<br>&#125;<br>.danger &#123;<br>    padding-left: 10px;<br>    background-color rgba(231,76,60,.3);<br>    border-left 4px solid rgb(231,76,60);<br>    color: darken(rgb(231,76,60),20%);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>样式展示<br>
+<img src="https://cdn.nlark.com/yuque/0/2023/png/12889352/1675862237748-96cd99a2-7107-4e99-aca0-d86e733707d7.png#averageHue=%23faecb6&amp;clientId=u7b4fb406-15fe-4&amp;from=paste&amp;height=304&amp;id=ufb894328&amp;name=image.png&amp;originHeight=380&amp;originWidth=1192&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=29570&amp;status=done&amp;style=none&amp;taskId=u37c61932-b3d2-4de9-86fd-f6f5cdeae88&amp;title=&amp;width=953.6" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 
                 
               </div>
@@ -471,7 +530,7 @@ hexo d # 发布</p>
   <div class="license-box my-3">
     <div class="license-title">
       <div>Hexo+GitHub博客搭建</div>
-      <div>https://wluffya.github.io/2022/12/29/博客搭建发布/</div>
+      <div>https://wluffya.github.io/2022/12/29/Hexo+GitHub博客搭建/</div>
     </div>
     <div class="license-meta">
       
